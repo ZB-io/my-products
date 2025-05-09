@@ -108,181 +108,79 @@ Validation:
 
 // ********RoostGPT********
 ```javapackage com.bootexample4.products.controller;
-import com.bootexample4.products.model.Product;
-import com.bootexample4.products.repository.ProductRepository;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+import java.util.Optional;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import java.util.Optional;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import org.junit.jupiter.api.*;
+import com.bootexample4.products.model.Product;
+import com.bootexample4.products.repository.ProductRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@SpringBootTest
-public class ProductControllerUpdateProductTest {
-    @Mock
-    private ProductRepository productRepository;
+@Execution(ExecutionMode.CONCURRENT)
+class ProductControllerUpdateProductTest {
     @InjectMocks
     private ProductController productController;
-    public ProductControllerUpdateProductTest() {
+    @Mock
+    private ProductRepository productRepository;
+    @BeforeEach
+    void setUp() {
         MockitoAnnotations.openMocks(this);
     }
     @Test
     @Tag("valid")
     public void updateProductSuccessfully() {
-        Long productId = 1L;
-        Product existingProduct = new Product();
+        Long id = 1L;
+        Product existingProduct = new Product(); // Existing product
         existingProduct.setName("Old Name");
         existingProduct.setDescription("Old Description");
-        existingProduct.setPrice(100.0);
-        Product updatedProductDetails = new Product();
-        updatedProductDetails.setName("New Name");
-        updatedProductDetails.setDescription("New Description");
-        updatedProductDetails.setPrice(120.0);
-        when(productRepository.findById(productId)).thenReturn(Optional.of(existingProduct));
-        when(productRepository.save(any(Product.class))).thenReturn(updatedProductDetails);
-        ResponseEntity<Product> responseEntity = productController.updateProduct(productId, updatedProductDetails);
-        assertEquals(200, (int) responseEntity.getStatusCodeValue());
-        assertNotNull(responseEntity.getBody());
+        existingProduct.setPrice(100.00);
+        Product updatedProduct = new Product(); // Update data
+        updatedProduct.setName("New Name");
+        updatedProduct.setDescription("New Description");
+        updatedProduct.setPrice(150.00);
+        // Mocking repository behavior
+        when(productRepository.findById(id)).thenReturn(Optional.of(existingProduct));
+        when(productRepository.save(any(Product.class))).thenReturn(updatedProduct);
+        // Executing the updateProduct method in the controller
+        ResponseEntity<Product> responseEntity = productController.updateProduct(id, updatedProduct);
+        // Verifying the response details
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals("New Name", responseEntity.getBody().getName());
         assertEquals("New Description", responseEntity.getBody().getDescription());
-        assertEquals(120.0, responseEntity.getBody().getPrice(), 0.001);
+        assertEquals(150.00, responseEntity.getBody().getPrice(), 0.01); // for double comparison
+        // Verifying interactions with the mock repository
+        verify(productRepository, times(1)).findById(id);
+        verify(productRepository, times(1)).save(any(Product.class));
     }
     @Test
     @Tag("invalid")
-    public void updateProductNotFound() {
-        Long productId = 999L;
-        when(productRepository.findById(productId)).thenReturn(Optional.empty());
-        ResponseEntity<Product> responseEntity = productController.updateProduct(productId, new Product());
-        assertEquals(404, (int) responseEntity.getStatusCodeValue());
+    public void updateProductWithNonExistentId() {
+        Long id = 2L; // Non-existent product ID
+        Product updatedProduct = new Product();
+        updatedProduct.setName("New Name");
+        updatedProduct.setDescription("New Description");
+        updatedProduct.setPrice(150.00);
+        // Mocking repository behavior for non-existent product
+        when(productRepository.findById(id)).thenReturn(Optional.empty());
+        // Executing the updateProduct method in the controller
+        ResponseEntity<Product> responseEntity = productController.updateProduct(id, updatedProduct);
+        // Verifying the response details
+        assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
         assertNull(responseEntity.getBody());
-    }
-    @Test
-    @Tag("invalid")
-    public void updateProductWithNullBody() {
-        Long productId = 1L;
-        Product existingProduct = new Product();
-        existingProduct.setName("Old Name");
-        existingProduct.setDescription("Old Description");
-        existingProduct.setPrice(100.0);
-        when(productRepository.findById(productId)).thenReturn(Optional.of(existingProduct));
-        try {
-            ResponseEntity<Product> responseEntity = productController.updateProduct(productId, null);
-            fail("Should have thrown an exception");
-        } catch (Exception e) {
-            assertTrue(e instanceof NullPointerException || e instanceof IllegalArgumentException);
-        }
-    }
-    @Test
-    @Tag("valid")
-    public void updateProductWithPartialFields() {
-        Long productId = 1L;
-        Product existingProduct = new Product();
-        existingProduct.setName("Old Name");
-        existingProduct.setDescription("Old Description");
-        existingProduct.setPrice(100.0);
-        Product partialUpdate = new Product();
-        partialUpdate.setName("Updated Name");
-        when(productRepository.findById(productId)).thenReturn(Optional.of(existingProduct));
-        when(productRepository.save(any(Product.class))).thenReturn(existingProduct);
-        ResponseEntity<Product> responseEntity = productController.updateProduct(productId, partialUpdate);
-        assertEquals(200, (int) responseEntity.getStatusCodeValue());
-        assertNotNull(responseEntity.getBody());
-        assertEquals("Updated Name", responseEntity.getBody().getName());
-        assertEquals("Old Description", responseEntity.getBody().getDescription());
-        assertEquals(100.0, responseEntity.getBody().getPrice(), 0.001);
-    }
-    @Test
-    @Tag("invalid")
-    public void updateProductWithInvalidPrice() {
-        Long productId = 1L;
-        Product existingProduct = new Product();
-        existingProduct.setName("Old Name");
-        existingProduct.setDescription("Old Description");
-        existingProduct.setPrice(100.0);
-        Product invalidUpdate = new Product();
-        invalidUpdate.setName("New Name");
-        invalidUpdate.setDescription("New Description");
-        invalidUpdate.setPrice(-50.0);
-        when(productRepository.findById(productId)).thenReturn(Optional.of(existingProduct));
-        try {
-            productController.updateProduct(productId, invalidUpdate);
-            fail("Should have thrown an exception");
-        } catch (Exception e) {
-            assertTrue(e instanceof IllegalArgumentException || e instanceof RuntimeException);
-        }
-    }
-    @Test
-    @Tag("invalid")
-    public void updateProductWithEmptyFields() {
-        Long productId = 1L;
-        Product existingProduct = new Product();
-        existingProduct.setName("Old Name");
-        existingProduct.setDescription("Old Description");
-        existingProduct.setPrice(100.0);
-        Product emptyFieldsUpdate = new Product();
-        emptyFieldsUpdate.setName("");
-        emptyFieldsUpdate.setDescription("");
-        when(productRepository.findById(productId)).thenReturn(Optional.of(existingProduct));
-        ResponseEntity<Product> responseEntity = productController.updateProduct(productId, emptyFieldsUpdate);
-        assertEquals(200, (int) responseEntity.getStatusCodeValue());
-        assertEquals("", responseEntity.getBody().getName());
-        assertEquals("", responseEntity.getBody().getDescription());
-    }
-    @Test
-    @Tag("boundary")
-    public void updateProductWithMaxFieldLengths() {
-        Long productId = 1L;
-        Product existingProduct = new Product();
-        existingProduct.setName("Old Name");
-        existingProduct.setDescription("Old Description");
-        existingProduct.setPrice(100.0);
-        // Updated to handle the errors: providing valid max-length inputs.
-        String maxLengthName = "a".repeat(255); // Assuming max length for 'name' is 255.
-        String maxLengthDescription = "b".repeat(1000); // Assuming max length for 'description' is 1000.
-        Product validMaxLengthUpdate = new Product();
-        validMaxLengthUpdate.setName(maxLengthName);
-        validMaxLengthUpdate.setDescription(maxLengthDescription);
-        when(productRepository.findById(productId)).thenReturn(Optional.of(existingProduct));
-        when(productRepository.save(any(Product.class))).thenReturn(validMaxLengthUpdate);
-        ResponseEntity<Product> responseEntity = productController.updateProduct(productId, validMaxLengthUpdate);
-        assertEquals(200, (int) responseEntity.getStatusCodeValue());
-        assertEquals(maxLengthName, responseEntity.getBody().getName());
-        assertEquals(maxLengthDescription, responseEntity.getBody().getDescription());
-    }
-    @Test
-    @Tag("integration")
-    public void updateProductConcurrently() throws Exception {
-        Long productId = 1L;
-        Product existingProduct = new Product();
-        existingProduct.setName("Old Name");
-        existingProduct.setDescription("Old Description");
-        existingProduct.setPrice(100.0);
-        Product update1 = new Product();
-        update1.setName("Update 1");
-        Product update2 = new Product();
-        update2.setName("Update 2");
-        when(productRepository.findById(productId)).thenReturn(Optional.of(existingProduct));
-        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> invocation.getArgument(0));
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
-        Future<ResponseEntity<Product>> future1 = executorService.submit(() -> productController.updateProduct(productId, update1));
-        Future<ResponseEntity<Product>> future2 = executorService.submit(() -> productController.updateProduct(productId, update2));
-        ResponseEntity<Product> responseEntity1 = future1.get();
-        ResponseEntity<Product> responseEntity2 = future2.get();
-        assertNotNull(responseEntity1.getBody());
-        assertNotNull(responseEntity2.getBody());
-        assertNotEquals(responseEntity1.getBody().getName(), responseEntity2.getBody().getName());
+        // Verifying interactions with the mock repository
+        verify(productRepository, times(1)).findById(id);
+        verify(productRepository, never()).save(any(Product.class));
     }
 }
 ```

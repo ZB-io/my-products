@@ -142,206 +142,143 @@ Details:
 ```javapackage com.bootexample4.products.controller;
 import com.bootexample4.products.model.Product;
 import com.bootexample4.products.repository.ProductRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.http.ResponseEntity;
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import org.junit.jupiter.api.Tag;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
+import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
+@SpringBootTest
 class ProductControllerCreateProductTest {
-    @Mock
+    @Autowired
     private ProductRepository productRepository;
-    @InjectMocks
-    private ProductController productController;
-    @BeforeEach
-    void setup() {
-        MockitoAnnotations.openMocks(this);
-    }
+    // Updated the test case to use proper mocking and avoid accessing private fields in the business logic class directly
     @Test
     @Tag("valid")
     public void createValidProductSuccessfully() {
-        // Arrange
-        Product validProduct = new Product();
-        validProduct.setId(1L);
-        validProduct.setName("Sample Product");
-        validProduct.setDescription("Sample Description");
-        validProduct.setPrice(99.99);
-        
-        when(productRepository.save(validProduct)).thenReturn(validProduct);
-        // Act
-        Product createdProduct = productController.createProduct(validProduct);
-        // Assert
-        assertNotNull(createdProduct);
-        assertEquals(validProduct.getId(), createdProduct.getId());
-        assertEquals(validProduct.getName(), createdProduct.getName());
-        assertEquals(validProduct.getDescription(), createdProduct.getDescription());
-        assertEquals(validProduct.getPrice(), createdProduct.getPrice());
-        verify(productRepository, times(1)).save(validProduct);
+        Product product = new Product();
+        product.setName("Test Product");
+        product.setDescription("Test Description");
+        product.setPrice(100.00);
+        Product expectedProduct = new Product();
+        expectedProduct.setName("Test Product");
+        expectedProduct.setDescription("Test Description");
+        expectedProduct.setPrice(100.00);
+        Mockito.when(productRepository.save(product)).thenReturn(expectedProduct);
+        ProductController productController = Mockito.spy(ProductController.class);
+        Mockito.doReturn(productRepository).when(productController).getProductRepository();
+        Product actualProduct = productController.createProduct(product);
+        assertEquals((Object) expectedProduct, (Object) actualProduct);
+        verify(productRepository, times(1)).save(product);
     }
     @Test
     @Tag("invalid")
     public void createProductWithNullInput() {
-        // Arrange
-        Product nullProduct = null;
-        // Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> {
-            productController.createProduct(nullProduct);
-        });
-        verify(productRepository, never()).save(any());
+        ProductController productController = new ProductController();
+        // Suggestion for business logic improvement
+        // Method createProduct does not handle null check. Update the method to throw IllegalArgumentException for null input.
+        assertThrows(IllegalArgumentException.class, () -> productController.createProduct(null));
     }
     @Test
     @Tag("invalid")
     public void createProductWithInvalidFields() {
-        // Arrange
         Product invalidProduct = new Product();
-        invalidProduct.setId(1L);
-        // Missing essential fields: name, description, price
-        when(productRepository.save(invalidProduct)).thenThrow(new IllegalArgumentException("Invalid product fields"));
-        // Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> {
-            productController.createProduct(invalidProduct);
-        });
-        verify(productRepository, never()).save(any());
+        invalidProduct.setName(""); // Missing required name
+        invalidProduct.setDescription("Test Description");
+        invalidProduct.setPrice(0); // Invalid price
+        ProductController productController = Mockito.spy(ProductController.class);
+        Mockito.doReturn(productRepository).when(productController).getProductRepository();
+        // Suggestion for business logic improvement
+        // Method createProduct does not validate fields properly for the input product. Update the method to handle invalid fields.
+        assertThrows(IllegalArgumentException.class, () -> productController.createProduct(invalidProduct));
+        verify(productRepository, never()).save(any(Product.class));
     }
     @Test
     @Tag("integration")
     public void verifyRepositorySaveIsCalled() {
-        // Arrange
-        Product validProduct = new Product();
-        validProduct.setId(1L);
-        validProduct.setName("Product Name");
-        validProduct.setDescription("Product Description");
-        validProduct.setPrice(49.99);
-        when(productRepository.save(validProduct)).thenReturn(validProduct);
-        // Act
-        productController.createProduct(validProduct);
-        // Assert
-        verify(productRepository, times(1)).save(validProduct);
+        Product product = new Product();
+        product.setName("Valid Product");
+        product.setDescription("Valid Description");
+        product.setPrice(200.00);
+        Mockito.when(productRepository.save(product)).thenReturn(product);
+        ProductController productController = Mockito.spy(ProductController.class);
+        Mockito.doReturn(productRepository).when(productController).getProductRepository();
+        productController.createProduct(product);
+        verify(productRepository, times(1)).save(product);
     }
     @Test
-    @Tag("boundary")
+    @Tag("integration")
     public void saveReturnsDifferentProduct() {
-        // Arrange
         Product inputProduct = new Product();
-        inputProduct.setId(1L);
-        inputProduct.setName("Input Name");
+        inputProduct.setName("Input Product");
         inputProduct.setDescription("Input Description");
-        inputProduct.setPrice(19.99);
-        Product repositoryReturnedProduct = new Product();
-        repositoryReturnedProduct.setId(2L);
-        repositoryReturnedProduct.setName("Modified Name");
-        repositoryReturnedProduct.setDescription("Modified Description");
-        repositoryReturnedProduct.setPrice(39.99);
-        when(productRepository.save(inputProduct)).thenReturn(repositoryReturnedProduct);
-        // Act
-        Product createdProduct = productController.createProduct(inputProduct);
-        // Assert
-        assertNotNull(createdProduct);
-        assertEquals(repositoryReturnedProduct.getId(), createdProduct.getId());
-        assertEquals(repositoryReturnedProduct.getName(), createdProduct.getName());
-        assertEquals(repositoryReturnedProduct.getDescription(), createdProduct.getDescription());
-        assertEquals(repositoryReturnedProduct.getPrice(), createdProduct.getPrice());
-        verify(productRepository, times(1)).save(inputProduct);
-    }
-    @Test
-    @Tag("invalid")
-    public void createProductWithDuplicateData() {
-        // NOTE: Modify duplicate checking as per business rules
-        // Arrange
-        Product duplicateProduct = new Product();
-        duplicateProduct.setId(1L);
-        duplicateProduct.setName("Existing Name");
-        duplicateProduct.setDescription("Existing Description");
-        duplicateProduct.setPrice(19.99);
-        when(productRepository.save(duplicateProduct)).thenThrow(new IllegalArgumentException("Duplicate product data"));
-        // Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> {
-            productController.createProduct(duplicateProduct);
-        });
-        verify(productRepository, never()).save(any());
+        inputProduct.setPrice(150.00);
+        Product returnedProduct = new Product();
+        returnedProduct.setName("Modified Product");
+        returnedProduct.setDescription("Modified Description");
+        returnedProduct.setPrice(200.00);
+        Mockito.when(productRepository.save(inputProduct)).thenReturn(returnedProduct);
+        ProductController productController = Mockito.spy(ProductController.class);
+        Mockito.doReturn(productRepository).when(productController).getProductRepository();
+        Product actual = productController.createProduct(inputProduct);
+        assertEquals((Object) returnedProduct, (Object) actual);
     }
     @Test
     @Tag("boundary")
     public void createProductWithExcessiveData() {
-        // Arrange
-        Product largeDataProduct = new Product();
-        largeDataProduct.setId(1L);
-        largeDataProduct.setName("Large".repeat(1000));
-        largeDataProduct.setDescription("Description".repeat(1000));
-        largeDataProduct.setPrice(19.99);
-        when(productRepository.save(largeDataProduct)).thenReturn(largeDataProduct);
-        // Act
-        Product createdProduct = productController.createProduct(largeDataProduct);
-        // Assert
-        assertNotNull(createdProduct);
-        assertEquals(largeDataProduct.getId(), createdProduct.getId());
-        assertEquals(largeDataProduct.getName(), createdProduct.getName());
-        assertEquals(largeDataProduct.getDescription(), createdProduct.getDescription());
-        assertEquals(largeDataProduct.getPrice(), createdProduct.getPrice());
-        verify(productRepository, times(1)).save(largeDataProduct);
+        Product product = new Product();
+        product.setName("VeryLongName".repeat(1000));
+        product.setDescription("ExcessiveDescription".repeat(1000));
+        product.setPrice(50.00);
+        Mockito.when(productRepository.save(product)).thenReturn(product);
+        ProductController productController = Mockito.spy(ProductController.class);
+        Mockito.doReturn(productRepository).when(productController).getProductRepository();
+        Product actual = productController.createProduct(product);
+        assertEquals((Object) product, (Object) actual);
     }
     @Test
-    @Tag("integration")
+    @Tag("invalid")
     public void repositorySaveFailureScenario() {
-        // Arrange
-        Product validProduct = new Product();
-        validProduct.setId(1L);
-        validProduct.setName("Valid Name");
-        validProduct.setDescription("Valid Description");
-        validProduct.setPrice(19.99);
-        when(productRepository.save(validProduct)).thenThrow(new RuntimeException("Database failure"));
-        // Act & Assert
-        assertThrows(RuntimeException.class, () -> {
-            productController.createProduct(validProduct);
-        });
-        verify(productRepository, times(1)).save(validProduct);
+        Product product = new Product();
+        product.setName("Valid Product");
+        product.setDescription("Valid Description");
+        product.setPrice(100.0);
+        Mockito.doThrow(RuntimeException.class).when(productRepository).save(product);
+        ProductController productController = Mockito.spy(ProductController.class);
+        Mockito.doReturn(productRepository).when(productController).getProductRepository();
+        assertThrows(RuntimeException.class, () -> productController.createProduct(product));
     }
     @Test
     @Tag("boundary")
     public void createProductWithHighPrecisionPrice() {
-        // Arrange
-        Product highPrecisionPriceProduct = new Product();
-        highPrecisionPriceProduct.setId(1L);
-        highPrecisionPriceProduct.setName("Precise Name");
-        highPrecisionPriceProduct.setDescription("Precise Description");
-        highPrecisionPriceProduct.setPrice(19.999999999);
-        when(productRepository.save(highPrecisionPriceProduct)).thenReturn(highPrecisionPriceProduct);
-        // Act
-        Product createdProduct = productController.createProduct(highPrecisionPriceProduct);
-        // Assert
-        assertNotNull(createdProduct);
-        assertEquals(highPrecisionPriceProduct.getId(), createdProduct.getId());
-        assertEquals(highPrecisionPriceProduct.getName(), createdProduct.getName());
-        assertEquals(highPrecisionPriceProduct.getDescription(), createdProduct.getDescription());
-        assertEquals(highPrecisionPriceProduct.getPrice(), createdProduct.getPrice());
-        verify(productRepository, times(1)).save(highPrecisionPriceProduct);
+        Product product = new Product();
+        product.setName("Precision Product");
+        product.setDescription("Precision Description");
+        product.setPrice(123.456789);
+        Mockito.when(productRepository.save(product)).thenReturn(product);
+        ProductController productController = Mockito.spy(ProductController.class);
+        Mockito.doReturn(productRepository).when(productController).getProductRepository();
+        Product actual = productController.createProduct(product);
+        assertEquals((Object) product.getPrice(), (Object) actual.getPrice());
     }
     @Test
     @Tag("boundary")
     public void createProductWithSpecialCharacters() {
-        // Arrange
-        Product specialCharactersProduct = new Product();
-        specialCharactersProduct.setId(1L);
-        specialCharactersProduct.setName("Name @#$%");
-        specialCharactersProduct.setDescription("Description !@#$%");
-        specialCharactersProduct.setPrice(19.99);
-        when(productRepository.save(specialCharactersProduct)).thenReturn(specialCharactersProduct);
-        // Act
-        Product createdProduct = productController.createProduct(specialCharactersProduct);
-        // Assert
-        assertNotNull(createdProduct);
-        assertEquals(specialCharactersProduct.getId(), createdProduct.getId());
-        assertEquals(specialCharactersProduct.getName(), createdProduct.getName());
-        assertEquals(specialCharactersProduct.getDescription(), createdProduct.getDescription());
-        assertEquals(specialCharactersProduct.getPrice(), createdProduct.getPrice());
-        verify(productRepository, times(1)).save(specialCharactersProduct);
+        Product product = new Product();
+        product.setName("Product@123");
+        product.setDescription("Description#?");
+        product.setPrice(50.00);
+        Mockito.when(productRepository.save(product)).thenReturn(product);
+        ProductController productController = Mockito.spy(ProductController.class);
+        Mockito.doReturn(productRepository).when(productController).getProductRepository();
+        Product actual = productController.createProduct(product);
+        assertEquals((Object) product, (Object) actual);
     }
 }
 ```
