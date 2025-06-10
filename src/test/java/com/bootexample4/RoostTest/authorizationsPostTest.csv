@@ -1,0 +1,11 @@
+RequestBody^|^statusCode^|^Token
+{"email":"user1@example.com"}^|^201^|^abcd1234xyz
+{"email":"user2@example.com"}^|^400^|^efgh5678uvw
+{"email":"user3@example.com"}^|^401^|^ijkl91011rst
+{"email":"user4@example.com"}^|^201^|^mnop121314opq
+{"email":"user5@example.com"}^|^400^|^qrst151617lmn
+{"email":"user6@example.com"}^|^401^|^uvwx181920yza
+{"email":"user7@example.com"}^|^201^|^yzab212223cde
+{"email":"user8@example.com"}^|^400^|^cdef242526fgh
+{"email":"user9@example.com"}^|^401^|^ghij272829ijk
+{"email":"user10@example.com"}^|^201^|^klmn303132lmn
