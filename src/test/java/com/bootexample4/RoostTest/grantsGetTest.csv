@@ -1,0 +1,11 @@
+RequestBody^|^statusCode^|^Token
+{"user_id":23,"action":"login","platform":"web"}^|^200^|^abc123xyz
+{"user_id":45,"action":"logout","platform":"mobile"}^|^200^|^def456uvw
+{"user_id":67,"action":"update_profile","platform":"web"}^|^200^|^ghi789rst
+{"user_id":89,"action":"password_change","platform":"mobile"}^|^401^|^jkl012opq
+{"user_id":11,"action":"delete_account","platform":"web"}^|^401^|^mno345stu
+{"user_id":22,"action":"reset_password","platform":"mobile"}^|^200^|^pqr678vwx
+{"user_id":33,"action":"enable_2fa","platform":"web"}^|^200^|^stu901yzm
+{"user_id":44,"action":"disable_2fa","platform":"mobile"}^|^401^|^uvw234klm
+{"user_id":55,"action":"login","platform":"mobile"}^|^200^|^xyz567pqr
+{"user_id":66,"action":"logout","platform":"web"}^|^401^|^abc890def

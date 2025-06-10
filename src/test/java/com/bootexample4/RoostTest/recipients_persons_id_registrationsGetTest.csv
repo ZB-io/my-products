@@ -1,0 +1,11 @@
+id^|^credential-url^|^size^|^offset^|^RequestBody^|^statusCode^|^Token
+9a7b6991-a68a-4dca-b2af-2f1c319a009d^|^https://example.com/cred1^|^25^|^0^|^{"action":"create","dataId":"12345","userId":"67890"}^|^200^|^abcdef123456
+e1f7269d-3a00-453c-bce5-57fa9bdc82c9^|^https://example.com/cred2^|^15^|^5^|^{"action":"update","dataId":"23456","changes":{"field":"value"}}^|^200^|^ghijkl789012
+7859e0d8-8969-488d-8d47-dc23cdc02a51^|^https://example.com/cred3^|^30^|^10^|^{"action":"delete","dataId":"34567","confirm":true}^|^400^|^mnopqr345678
+c64a0be4-5d58-44bb-b597-861ec8babef7^|^https://example.com/cred4^|^20^|^0^|^{"action":"retrieval","userId":"45678","parameters":{"key":"value"}}^|^401^|^stuvwx901234
+44434e95-97de-41d5-8a29-10a738682bfa^|^https://example.com/cred5^|^12^|^2^|^{"action":"query","query":"SELECT * FROM table"}^|^200^|^yzabcd345678
+ee392302-c9a3-4d38-aaa3-c233d3fbc680^|^https://example.com/cred6^|^45^|^25^|^{"action":"backup","backupId":"56789"}^|^200^|^efghij890123
+3b607da2-cfa8-4801-82be-2976dd314146^|^https://example.com/cred7^|^18^|^8^|^{"action":"restore","restoreId":"67890"}^|^400^|^klmnop456789
+da71c002-d69c-4ed7-b2a9-5db818e74d3b^|^https://example.com/cred8^|^35^|^30^|^{"action":"sync","syncData":{"items":["item1","item2"]}}^|^401^|^qrstuv012345
+dc8e0dc5-a08f-4473-925d-730e493fa495^|^https://example.com/cred9^|^10^|^7^|^{"action":"shutdown","shutdownKey":"91011"}^|^200^|^wxyzab567890
+bafb98f2-2a5c-4b02-91f3-28205360fbc5^|^https://example.com/cred10^|^23^|^12^|^{"action":"startup","params":{"mode":"default"}}^|^200^|^cdefgh678901

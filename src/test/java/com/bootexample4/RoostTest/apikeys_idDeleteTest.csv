@@ -1,0 +1,11 @@
+id^|^RequestBody^|^statusCode^|^Token
+8a8f3b1e-b2e6-49b3-87fa-ac2e042a56e6^|^{"action":"login","username":"user1","password":"pass123"}^|^200^|^a3f5d6fa79e84b3b82f6e3a5d9
+d7a9f034-31c2-4dbf-86ff-af7caa7ea42f^|^{"action":"logout","username":"user1"}^|^200^|^f943cf259a644ac68aef072ef4
+160bc77e-250e-45cd-9467-1d5f9419699d^|^{"action":"signup","email":"testuser2@mail.com","password":"strongPwd456"}^|^401^|^8472ac563fb9482fa321d1b5e5
+edbe3b5e-6a3c-4093-824e-df4ddf843b81^|^{"action":"profileUpdate","username":"user2","changes":{"bio":"Hello World!"}}^|^200^|^432fa568cdef4b2dbf643b0c8e
+cd1ff2d4-0431-4e5b-bada-f298b76b2a69^|^{"action":"login","username":"user2","password":"newPass789"}^|^400^|^29c1b43accf142d99193db16e9
+f840b593-b27a-4458-b940-e582afc73958^|^{"action":"deleteAccount","username":"user3"}^|^200^|^dca657f9b39c4dffa762b54b91
+53efcf01-fa36-495d-9a44-d295c401a3c2^|^{"action":"resetPassword","email":"forgot123@web.com"}^|^401^|^b92e4c75dea945499381752a6f
+8ac7c4c3-ddee-4a2a-80fc-8c366b682b5a^|^{"action":"fetchData","queryParams":{"type":"userStats","limit":10}}^|^200^|^67cf9d2a504f4a2ea567c51add
+bd7576d4-99fd-46e4-b6c6-d776598a3597^|^{"action":"deleteMessage","messageId":"msg82934"}^|^400^|^5a63c6a926884d9a97c037b1f3
+a0a34d8b-a1d2-4de2-bb09-21523c66b11b^|^{"action":"updatePreferences","username":"user5","preferences":{"theme":"dark"}}^|^200^|^1ad4c6ee458c48ba9c3f0fad59

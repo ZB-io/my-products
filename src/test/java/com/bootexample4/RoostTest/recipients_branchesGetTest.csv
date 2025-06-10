@@ -1,0 +1,11 @@
+coc-number^|^coc-branch-number^|^trade-name^|^size^|^offset^|^RequestBody^|^statusCode^|^Token
+12345678^|^123456789012^|^Alpha Logistics^|^30^|^0^|^{"action":"create","date":"2023-10-01","priority":"high"}^|^200^|^token_1_AZBYCX
+87654321^|^098765432109^|^Beta Solutions^|^25^|^5^|^{"action":"update","date":"2023-10-02","priority":"medium"}^|^200^|^token_2_LKJHGF
+23456789^|^123498765432^|^Gamma Enterprises^|^18^|^10^|^{"action":"delete","date":"2023-10-03","priority":"low"}^|^400^|^token_3_QWERTY
+56789012^|^567812349876^|^Delta Innovations^|^45^|^0^|^{"action":"create","date":"2023-10-04","priority":"high"}^|^401^|^token_4_ASDFGH
+34567890^|^987654321098^|^Omega Tech^|^15^|^3^|^{"action":"update","date":"2023-10-05","priority":"medium"}^|^200^|^token_5_ZXCVBN
+65432109^|^765432109876^|^Sigma Systems^|^40^|^8^|^{"action":"delete","date":"2023-10-06","priority":"low"}^|^400^|^token_6_MNBVCX
+45678901^|^432109876543^|^Epsilon Networks^|^20^|^2^|^{"action":"create","date":"2023-10-07","priority":"high"}^|^401^|^token_7_QAZWSX
+89012345^|^678910111213^|^Zeta Dynamics^|^10^|^4^|^{"action":"update","date":"2023-10-08","priority":"medium"}^|^200^|^token_8_EDCRFV
+78901234^|^567890123456^|^Theta Holdings^|^50^|^6^|^{"action":"delete","date":"2023-10-09","priority":"low"}^|^400^|^token_9_TGBYHN
+90817263^|^872634091827^|^Kappa Developments^|^35^|^1^|^{"action":"create","date":"2023-10-10","priority":"high"}^|^401^|^token_10_YUIOPL
