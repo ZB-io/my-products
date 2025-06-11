@@ -1,0 +1,11 @@
+koreUserId^|^botId^|^accountId^|^Authorization^|^RequestBody^|^statusCode^|^bearer
+user12345^|^bot56789^|^acc98765^|^Bearer abcdefghijklmnop1234567890^|^{"customerId":101,"emailId":"user1@example.com","transactionsData":[{"transactionId":1001,"reasonCode":"TRANSACTION_SUCCESS"}]}^|^200^|^
+user54321^|^bot98765^|^acc12345^|^Bearer zyxwvutsrqponml1234567890^|^{"customerId":102,"emailId":"user2@example.com","transactionsData":[{"transactionId":1002,"reasonCode":"TRANSACTION_FAILURE"}]}^|^401^|^
+user11223^|^bot22334^|^acc66778^|^Bearer abcdefghijkl1234567890xyz^|^{"customerId":103,"emailId":"user3@example.com","transactionsData":[{"transactionId":1003,"reasonCode":"TRANSACTION_PENDING"}]}^|^404^|^
+user33445^|^bot55667^|^acc88990^|^Bearer aabbccdd1122334455xyz^|^{"customerId":104,"emailId":"user4@example.com","transactionsData":[{"transactionId":1004,"reasonCode":"TRANSACTION_SUCCESS"}]}^|^200^|^
+user44556^|^bot66778^|^acc99001^|^Bearer eeffgghh2244668800xyz^|^{"customerId":105,"emailId":"user5@example.com","transactionsData":[{"transactionId":1005,"reasonCode":"TRANSACTION_FAILURE"}]}^|^401^|^
+user55667^|^bot77889^|^acc12322^|^Bearer 66998877jjhhkk112233xyz^|^{"customerId":106,"emailId":"user6@example.com","transactionsData":[{"transactionId":1006,"reasonCode":"TRANSACTION_PENDING"}]}^|^404^|^
+user66778^|^bot88990^|^acc45634^|^Bearer opqrstuvwxyz123975xyz^|^{"customerId":107,"emailId":"user7@example.com","transactionsData":[{"transactionId":1007,"reasonCode":"TRANSACTION_SUCCESS"}]}^|^200^|^
+user77889^|^bot99101^|^acc78956^|^Bearer yuuyruyyy8329qsxyz^|^{"customerId":108,"emailId":"user8@example.com","transactionsData":[{"transactionId":1008,"reasonCode":"TRANSACTION_FAILURE"}]}^|^401^|^
+user88990^|^bot10234^|^acc89167^|^Bearer 3412mnqyzz__rsxyz^|^{"customerId":109,"emailId":"user9@example.com","transactionsData":[{"transactionId":1009,"reasonCode":"TRANSACTION_PENDING"}]}^|^404^|^
+user99101^|^bot34567^|^acc34280^|^Bearer caaa778_wwxyzvav^|^{"customerId":110,"emailId":"user10@example.com","transactionsData":[{"transactionId":1010,"reasonCode":"TRANSACTION_SUCCESS"}]}^|^200^|^

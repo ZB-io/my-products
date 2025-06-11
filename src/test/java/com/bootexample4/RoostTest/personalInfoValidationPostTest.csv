@@ -1,0 +1,11 @@
+RequestBody^|^statusCode^|^bearer
+{"customerId":10101,"dob":"1985-04-25","ssn":123456789,"secrectPassword":"pass123!","AccNumber":"ACC001","lastDepositAmt":5000}^|^200^|^BearerToken_123
+{"customerId":10102,"dob":"1990-11-12","ssn":234567890,"secrectPassword":"safePass$","AccNumber":"ACC002","lastDepositAmt":7500}^|^401^|^BearerToken_456
+{"customerId":10103,"dob":"1975-07-30","ssn":345678901,"secrectPassword":"Secure#Key","AccNumber":"ACC003","lastDepositAmt":3000}^|^404^|^BearerToken_789
+{"customerId":10104,"dob":"2000-01-15","ssn":456789012,"secrectPassword":"MySecret@123","AccNumber":"ACC004","lastDepositAmt":8800}^|^200^|^BearerToken_321
+{"customerId":10105,"dob":"1995-05-22","ssn":567890123,"secrectPassword":"UltraSafe!789","AccNumber":"ACC005","lastDepositAmt":7700}^|^401^|^BearerToken_654
+{"customerId":10106,"dob":"1988-03-10","ssn":678901234,"secrectPassword":"Strong&Code","AccNumber":"ACC006","lastDepositAmt":6650}^|^200^|^BearerToken_987
+{"customerId":10107,"dob":"1979-09-03","ssn":789012345,"secrectPassword":"KeepItSecret%","AccNumber":"ACC007","lastDepositAmt":4500}^|^404^|^BearerToken_111
+{"customerId":10108,"dob":"1992-06-18","ssn":890123456,"secrectPassword":"Hidden$763","AccNumber":"ACC008","lastDepositAmt":9500}^|^200^|^BearerToken_222
+{"customerId":10109,"dob":"1981-08-05","ssn":901234567,"secrectPassword":"Stealth%456","AccNumber":"ACC009","lastDepositAmt":3900}^|^401^|^BearerToken_333
+{"customerId":10110,"dob":"1970-02-24","ssn":123098765,"secrectPassword":"TopSecret_908","AccNumber":"ACC010","lastDepositAmt":12000}^|^404^|^BearerToken_444

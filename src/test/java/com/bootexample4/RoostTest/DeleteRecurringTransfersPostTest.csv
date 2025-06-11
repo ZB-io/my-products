@@ -1,0 +1,11 @@
+koreUserId^|^botId^|^userCode^|^accountId^|^Authorization^|^RequestBody^|^statusCode^|^bearer
+user12345^|^bot67890^|^codeABC123^|^account98765^|^Bearer abcdef0123456789^|^{"paymentId":"pay56789","updateTransferType":"ACH","customerId":101}^|^200^|^
+user54321^|^bot09876^|^codeXYZ456^|^account12345^|^Bearer zyxwv0987654321^|^{"paymentId":"pay12345","updateTransferType":"SWIFT","customerId":102}^|^401^|^
+user98765^|^bot54321^|^codeLMN789^|^account34567^|^Bearer lmno5432109876543^|^{"paymentId":"pay98765","updateTransferType":"ACH","customerId":103}^|^404^|^
+user24680^|^bot13579^|^codeJKL321^|^account56789^|^Bearer jklm2468013579^|^{"paymentId":"pay24680","updateTransferType":"SWIFT","customerId":104}^|^200^|^
+user13579^|^bot24680^|^codeGHI654^|^account78901^|^Bearer ghij1357924680^|^{"paymentId":"pay13579","updateTransferType":"ACH","customerId":105}^|^401^|^
+user96321^|^bot35791^|^codeEFG987^|^account89012^|^Bearer efgh9632157912^|^{"paymentId":"pay96321","updateTransferType":"SWIFT","customerId":106}^|^404^|^
+user85275^|^bot46892^|^codeDEF210^|^account90123^|^Bearer defg8527546892^|^{"paymentId":"pay85275","updateTransferType":"ACH","customerId":107}^|^200^|^
+user74103^|^bot57903^|^codeCBA543^|^account01234^|^Bearer cbai7410357903^|^{"paymentId":"pay74103","updateTransferType":"SWIFT","customerId":108}^|^401^|^
+user63011^|^bot68014^|^codeZYX876^|^account12345^|^Bearer zyxi6301168014^|^{"paymentId":"pay63011","updateTransferType":"ACH","customerId":109}^|^404^|^
+user51999^|^bot79122^|^codeWVU321^|^account23456^|^Bearer wvax5199919122^|^{"paymentId":"pay51999","updateTransferType":"SWIFT","customerId":110}^|^200^|^

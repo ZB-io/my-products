@@ -1,0 +1,11 @@
+botId^|^accountId^|^Authorization^|^RequestBody^|^statusCode^|^bearer
+a1b2c3d4^|^acc123^|^Bearer abcdef123456^|^{"sourcePin":"1234"}^|^200^|^
+b5c6d7e8^|^acc456^|^Bearer qwerty654321^|^{"sourcePin":"5678"}^|^401^|^
+c7d8e9f0^|^acc789^|^Bearer zxcvbn987654^|^{"sourcePin":"4321"}^|^404^|^
+d1e2f3g4^|^acc234^|^Bearer asdfgh765432^|^{"sourcePin":"8765"}^|^200^|^
+e3f4g5h6^|^acc567^|^Bearer hjklui543210^|^{"sourcePin":"6789"}^|^401^|^
+f5g6h7i8^|^acc890^|^Bearer mnbvcx098765^|^{"sourcePin":"9876"}^|^404^|^
+g7h8i9j0^|^acc345^|^Bearer poiuytr123654^|^{"sourcePin":"3456"}^|^200^|^
+h1i2j3k4^|^acc678^|^Bearer lkjhgfd321654^|^{"sourcePin":"6543"}^|^401^|^
+i3j4k5l6^|^acc1234^|^Bearer qazxsw098123^|^{"sourcePin":"5678"}^|^404^|^
+j5k6l7m8^|^acc5678^|^Bearer plmokn098765^|^{"sourcePin":"7890"}^|^200^|^

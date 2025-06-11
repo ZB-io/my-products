@@ -1,0 +1,11 @@
+koreUserId^|^botId^|^accountId^|^Authorization^|^RequestBody^|^statusCode^|^bearer
+user123^|^bot456^|^acc789^|^Bearer abcdef12345^|^{"customerId":1001,"amount":250,"currency":"USD","sourceAccountId":"src123","targetAccountId":"tgt456","transactionType":1,"dueDate":"2023-11-01"}^|^200^|^
+user456^|^bot789^|^acc123^|^Bearer uvwxyz67890^|^{"customerId":1002,"amount":500,"currency":"USD","sourceAccountId":"src456","targetAccountId":"tgt789","transactionType":2,"dueDate":"2023-11-15"}^|^401^|^
+user789^|^bot123^|^acc456^|^Bearer pqrst23456^|^{"customerId":1003,"amount":750,"currency":"GBP","sourceAccountId":"src789","targetAccountId":"tgt123","transactionType":3,"dueDate":"2023-11-30"}^|^404^|^
+user999^|^bot888^|^acc111^|^Bearer lmno98765^|^{"customerId":1004,"amount":1000,"currency":"EUR","sourceAccountId":"src111","targetAccountId":"tgt222","transactionType":4,"dueDate":"2023-12-05"}^|^200^|^
+user321^|^bot654^|^acc987^|^Bearer abcxyz54321^|^{"customerId":1005,"amount":300,"currency":"USD","sourceAccountId":"src333","targetAccountId":"tgt444","transactionType":1,"dueDate":"2023-10-20"}^|^401^|^
+user654^|^bot321^|^acc654^|^Bearer defabc78901^|^{"customerId":1006,"amount":450,"currency":"AUD","sourceAccountId":"src555","targetAccountId":"tgt666","transactionType":2,"dueDate":"2023-11-10"}^|^404^|^
+user111^|^bot999^|^acc321^|^Bearer ghijk12345^|^{"customerId":1007,"amount":600,"currency":"EUR","sourceAccountId":"src777","targetAccountId":"tgt888","transactionType":3,"dueDate":"2023-12-01"}^|^200^|^
+user222^|^bot111^|^acc222^|^Bearer klmno54321^|^{"customerId":1008,"amount":850,"currency":"USD","sourceAccountId":"src999","targetAccountId":"tgt999","transactionType":4,"dueDate":"2023-12-10"}^|^401^|^
+user333^|^bot222^|^acc333^|^Bearer qrstuvwxyz123^|^{"customerId":1009,"amount":920,"currency":"CAD","sourceAccountId":"src101","targetAccountId":"tgt102","transactionType":5,"dueDate":"2023-12-15"}^|^404^|^
+user444^|^bot333^|^acc444^|^Bearer abcghijk34567^|^{"customerId":1010,"amount":1100,"currency":"USD","sourceAccountId":"src103","targetAccountId":"tgt104","transactionType":6,"dueDate":"2023-12-20"}^|^200^|^

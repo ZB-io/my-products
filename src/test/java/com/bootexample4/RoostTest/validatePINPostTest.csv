@@ -1,0 +1,11 @@
+botId^|^accountId^|^Authorization^|^RequestBody^|^statusCode^|^bearer
+BOT001^|^ACC12345^|^Bearer token123abc^|^{"sourcePin":"1234","targetPin":"5678","profileInfo":{"customerId":"CUST001","accountNumber":"ACC001234","ssn":"123-45-6789"}}^|^200^|^
+BOT002^|^ACC67890^|^Bearer token890xyz^|^{"sourcePin":"2345","targetPin":"6789","profileInfo":{"customerId":"CUST002","accountNumber":"ACC678900","ssn":"987-65-4321"}}^|^404^|^
+BOT003^|^ACC11223^|^Bearer token456uvw^|^{"sourcePin":"3456","targetPin":"7890","profileInfo":{"customerId":"CUST003","accountNumber":"ACC112233","ssn":"456-78-9012"}}^|^401^|^
+BOT004^|^ACC44556^|^Bearer token789rst^|^{"sourcePin":"4567","targetPin":"8901","profileInfo":{"customerId":"CUST004","accountNumber":"ACC445566","ssn":"321-54-9876"}}^|^200^|^
+BOT005^|^ACC77889^|^Bearer token123lmn^|^{"sourcePin":"5678","targetPin":"9012","profileInfo":{"customerId":"CUST005","accountNumber":"ACC778899","ssn":"654-32-1098"}}^|^404^|^
+BOT006^|^ACC99000^|^Bearer token456opq^|^{"sourcePin":"6789","targetPin":"0123","profileInfo":{"customerId":"CUST006","accountNumber":"ACC990000","ssn":"789-01-2345"}}^|^200^|^
+BOT007^|^ACC22334^|^Bearer token789ghi^|^{"sourcePin":"7890","targetPin":"1234","profileInfo":{"customerId":"CUST007","accountNumber":"ACC223344","ssn":"890-12-3456"}}^|^401^|^
+BOT008^|^ACC55667^|^Bearer token123jkl^|^{"sourcePin":"8901","targetPin":"2345","profileInfo":{"customerId":"CUST008","accountNumber":"ACC556677","ssn":"567-89-0123"}}^|^200^|^
+BOT009^|^ACC88990^|^Bearer token456abc^|^{"sourcePin":"9012","targetPin":"3456","profileInfo":{"customerId":"CUST009","accountNumber":"ACC889900","ssn":"234-56-7890"}}^|^404^|^
+BOT010^|^ACC10111^|^Bearer token789def^|^{"sourcePin":"0123","targetPin":"4567","profileInfo":{"customerId":"CUST010","accountNumber":"ACC101112","ssn":"111-22-3333"}}^|^200^|^

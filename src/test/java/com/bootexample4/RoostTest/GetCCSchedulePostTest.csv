@@ -1,0 +1,11 @@
+koreUserId^|^botId^|^accountId^|^Authorization^|^RequestBody^|^statusCode^|^bearer
+user12345^|^bot56789^|^account98765^|^Bearer AbcdEf123FgHij^|^{"customerId":101,"status":"active"}^|^200^|^
+user67890^|^bot54321^|^account12345^|^Bearer Xyz987Lmn456Opq^|^{"customerId":102,"status":"inactive"}^|^401^|^
+user11223^|^bot33445^|^account55667^|^Bearer PqrSt456UvWxz^|^{"customerId":103,"status":"active"}^|^404^|^
+user44556^|^bot77889^|^account99887^|^Bearer GhiJk291LmNo^|^{"customerId":104,"status":"active"}^|^200^|^
+user22567^|^bot11234^|^account55678^|^Bearer AbcdEfg765HijK^|^{"customerId":105,"status":"inactive"}^|^401^|^
+user33478^|^bot66788^|^account99812^|^Bearer XyzPqr981LmnNpd^|^{"customerId":106,"status":"active"}^|^404^|^
+user55588^|^bot99876^|^account22445^|^Bearer UvWxzy891GhiKlmn^|^{"customerId":107,"status":"active"}^|^200^|^
+user11889^|^bot33467^|^account99211^|^Bearer JklAbc765EfgXyz^|^{"customerId":108,"status":"inactive"}^|^401^|^
+user67234^|^bot11278^|^account77655^|^Bearer MnOp123QrsUvWx^|^{"customerId":109,"status":"active"}^|^404^|^
+user44321^|^bot88901^|^account33456^|^Bearer LmnGhi234AbcEfg^|^{"customerId":110,"status":"active"}^|^200^|^

@@ -1,0 +1,11 @@
+RequestBody^|^statusCode^|^bearer
+{"debitCardNumber":"4512345678901234","pin":"1234","cvv":"567","expiryDate":"12/25","customerId":1001}^|^200^|^
+{"debitCardNumber":"4534567890123456","pin":"5678","cvv":"890","expiryDate":"11/25","customerId":1002}^|^401^|^
+{"debitCardNumber":"4911122233445566","pin":"4321","cvv":"321","expiryDate":"10/24","customerId":1003}^|^404^|^
+{"debitCardNumber":"4722167788990112","pin":"2468","cvv":"147","expiryDate":"09/26","customerId":1004}^|^200^|^
+{"debitCardNumber":"4012888888881881","pin":"1357","cvv":"258","expiryDate":"08/23","customerId":1005}^|^401^|^
+{"debitCardNumber":"4024007173839134","pin":"9876","cvv":"654","expiryDate":"01/27","customerId":1006}^|^404^|^
+{"debitCardNumber":"4485399999999999","pin":"1122","cvv":"789","expiryDate":"05/24","customerId":1007}^|^200^|^
+{"debitCardNumber":"4916336000000000","pin":"2211","cvv":"369","expiryDate":"06/26","customerId":1008}^|^401^|^
+{"debitCardNumber":"4024007173839135","pin":"3344","cvv":"963","expiryDate":"03/25","customerId":1009}^|^404^|^
+{"debitCardNumber":"4711234567898765","pin":"5566","cvv":"852","expiryDate":"07/23","customerId":1010}^|^200^|^
