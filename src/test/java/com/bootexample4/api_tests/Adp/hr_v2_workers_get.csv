@@ -1,0 +1,6 @@
+filter,top,skip
+"/workers/workerID/idValue eq '0099'","10","0"
+"/workers/person/birthDate eq '1990-01-01'","5","10"
+"/workers/workerID/idValue eq '0099'","20","20"
+"/workers/person/birthDate eq '1990-01-01'","5","10"
+"/workers/workerID/idValue eq '0099'","20","20"
