@@ -22,10 +22,13 @@ ROOST_METHOD_SIG_HASH=getId_ba349b1eff
                      חשוב לוודא שמנגנון אחזור המזהה פועל כראוי עבור ערכים תקינים
 
 
+
+roost_feedback [25/06/2025, 10:42:28 AM]:הוסף\sהערה\sשהמבחן\sהזה\sנוצר\sעל\sידי\sדיביש\sמהשווארי
 */
 
 // ********RoostGPT********
 
+// Test created by Divyesh Maheshwari
 package com.bootexample4.products.model;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -40,71 +43,63 @@ import jakarta.persistence.Id;
 
 class ProductGetIdTest {
 
-	private Product product;
+    private Product product;
 
-	@BeforeEach
-	void setUp() {
-		product = new Product();
-	}
+    @BeforeEach
+    void setUp() {
+        product = new Product();
+    }
 
-	@Test
-	@Tag("valid")
-	void getValidId() {
-		// Arrange
-		Long expectedId = 1L;
-		product.setId(expectedId);
-		// Act
-		Long actualId = product.getId();
-		// Assert
-		assertEquals(expectedId, actualId);
-	}
+    @Test
+    @Tag("valid")
+    @DisplayName("Test getting valid ID")
+    void getValidId() {
+        Long expectedId = 1L;
+        product.setId(expectedId);
+        Long actualId = product.getId();
+        assertEquals(expectedId, actualId, "ID should match the set value");
+    }
 
-	@Test
-	@Tag("valid")
-	void getIdReturnsNullForUninitializedId() {
-		// Act
-		Long actualId = product.getId();
-		// Assert
-		assertNull(actualId);
-	}
+    @Test
+    @Tag("valid") 
+    @DisplayName("Test getting ID when uninitialized")
+    void getIdReturnsNullForUninitializedId() {
+        Long actualId = product.getId();
+        assertNull(actualId, "ID should be null when not initialized");
+    }
 
-	@Test
-	@Tag("boundary")
-	void getIdWithMaxValue() {
-		// Arrange
-		Long maxId = Long.MAX_VALUE;
-		product.setId(maxId);
-		// Act
-		Long actualId = product.getId();
-		// Assert
-		assertEquals(maxId, actualId);
-	}
+    @Test
+    @Tag("boundary")
+    @DisplayName("Test getting ID with maximum value")
+    void getIdWithMaxValue() {
+        Long maxId = Long.MAX_VALUE;
+        product.setId(maxId);
+        Long actualId = product.getId();
+        assertEquals(maxId, actualId, "ID should handle maximum Long value");
+    }
 
-	@Test
-	@Tag("boundary")
-	void getIdWithMinValue() {
-		// Arrange
-		Long minId = Long.MIN_VALUE;
-		product.setId(minId);
-		// Act
-		Long actualId = product.getId();
-		// Assert
-		assertEquals(minId, actualId);
-	}
+    @Test
+    @Tag("boundary")
+    @DisplayName("Test getting ID with minimum value") 
+    void getIdWithMinValue() {
+        Long minId = Long.MIN_VALUE;
+        product.setId(minId);
+        Long actualId = product.getId();
+        assertEquals(minId, actualId, "ID should handle minimum Long value");
+    }
 
-	@Test
-	@Tag("valid")
-	void getIdAfterMultipleSetOperations() {
-		// Arrange
-		Long firstId = 1L;
-		Long secondId = 2L;
+    @Test
+    @Tag("valid")
+    @DisplayName("Test getting ID after multiple set operations")
+    void getIdAfterMultipleSetOperations() {
+        Long firstId = 1L;
+        Long secondId = 2L;
 
-		// Act & Assert
-		product.setId(firstId);
-		assertEquals(firstId, product.getId());
+        product.setId(firstId);
+        assertEquals(firstId, product.getId(), "ID should match first set value");
 
-		product.setId(secondId);
-		assertEquals(secondId, product.getId());
-	}
+        product.setId(secondId);
+        assertEquals(secondId, product.getId(), "ID should match second set value");
+    }
 
 }
