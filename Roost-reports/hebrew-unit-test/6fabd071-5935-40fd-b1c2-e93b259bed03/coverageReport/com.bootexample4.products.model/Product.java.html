@@ -8,47 +8,46 @@ import jakarta.persistence.Id;
 @Entity
 <span class="fc" id="L9">public class Product {</span>
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String name;
+    private String name;
 
-	private String description;
+    private String description;
 
-	private double price;
+    private double price;
 
-	public Long getId() {
-<span class="fc" id="L22">		return id;</span>
-	}
+    public Long getId() {
+<span class="fc" id="L22">        return id;</span>
+    }
 
-	public void setId(Long id) {
-<span class="fc" id="L26">		this.id = id;</span>
-<span class="fc" id="L27">	}</span>
+    public void setId(Long id) {
+<span class="fc" id="L26">        this.id = id;</span>
+<span class="fc" id="L27">    }</span>
 
-	public String getName() {
-<span class="fc" id="L30">		return name;</span>
-	}
+    public String getName() {
+<span class="fc" id="L30">        return name;</span>
+    }
 
-	public void setName(String name) {
-<span class="fc" id="L34">		this.name = name;</span>
-<span class="fc" id="L35">	}</span>
+    public void setName(String name) {
+<span class="fc" id="L34">        this.name = name;</span>
+<span class="fc" id="L35">    }</span>
 
-	public String getDescription() {
-<span class="fc" id="L38">		return description;</span>
-	}
+    public String getDescription() {
+<span class="fc" id="L38">        return description;</span>
+    }
 
-	public void setDescription(String description) {
-<span class="fc" id="L42">		this.description = description;</span>
-<span class="fc" id="L43">	}</span>
+    public void setDescription(String description) {
+<span class="fc" id="L42">        this.description = description;</span>
+<span class="fc" id="L43">    }</span>
 
-	public double getPrice() {
-<span class="fc" id="L46">		return price;</span>
-	}
+    public double getPrice() {
+<span class="fc" id="L46">        return price;</span>
+    }
 
-	public void setPrice(double price) {
-<span class="fc" id="L50">		this.price = price;</span>
-<span class="fc" id="L51">	}</span>
-
+    public void setPrice(double price) {
+<span class="fc" id="L50">        this.price = price;</span>
+<span class="fc" id="L51">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
