@@ -1,31 +1,31 @@
 [
   {
     "category": "phy",
-    "year": 1989,
+    "year": "2000",
     "statusCode": 200,
     "scenario": "Successful call of the Nobel Prize giving the category and year"
   },
   {
     "category": "invalid_category",
-    "year": "invalid_year",
+    "year": "1800",
     "statusCode": 400,
     "scenario": "Bad request.The request could not be understood by the server due to malformed syntax, modifications needed."
   },
   {
-    "category": "lit",
-    "year": 1901,
+    "category": "med",
+    "year": "1989",
     "statusCode": 404,
     "scenario": "Not Found. The requested resource could not be found but may be available again in the future."
   },
   {
-    "category": "",
-    "year": 1888,
+    "category": "lit",
+    "year": "2020",
     "statusCode": 422,
     "scenario": "Unprocessable Entity. The request was well-formed but was unable to be followed due to semantic errors."
   },
   {
-    "category": "med",
-    "year": 1975,
+    "category": "che",
+    "year": "2015",
     "statusCode": 200,
     "scenario": "Successful call of the Nobel Prize giving the category and year"
   }
