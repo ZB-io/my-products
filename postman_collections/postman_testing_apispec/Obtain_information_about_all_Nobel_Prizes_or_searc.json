@@ -1,0 +1,62 @@
+[
+  {
+    "offset": "5",
+    "limit": "10",
+    "sort": "asc",
+    "nobelPrizeYear": "1989",
+    "yearTo": "1990",
+    "nobelPrizeCategory": "peace",
+    "format": "json",
+    "csvLang": "en",
+    "statusCode": 200,
+    "scenario": "Successful call of Nobel Prize(s) according to the filled fields"
+  },
+  {
+    "offset": "-10",
+    "limit": "invalid_limit",
+    "sort": "unknown_sort",
+    "nobelPrizeYear": "abcd",
+    "yearTo": "xyz",
+    "nobelPrizeCategory": "",
+    "format": "undefined_format",
+    "csvLang": "invalid_lang",
+    "statusCode": 400,
+    "scenario": "Bad request.The request could not be understood by the server due to malformed syntax, modifications needed."
+  },
+  {
+    "offset": "999999",
+    "limit": "1000",
+    "sort": "desc",
+    "nobelPrizeYear": "2023",
+    "yearTo": "2024",
+    "nobelPrizeCategory": "medicine",
+    "format": "csv",
+    "csvLang": "sv",
+    "statusCode": 200,
+    "scenario": "Successful call of Nobel Prize(s) according to the filled fields"
+  },
+  {
+    "offset": "invalid_offset",
+    "limit": "too_large_limit",
+    "sort": "invalid_sort",
+    "nobelPrizeYear": "!2021",
+    "yearTo": "!2020",
+    "nobelPrizeCategory": "unknown_category",
+    "format": "invalid_format",
+    "csvLang": "!en",
+    "statusCode": 404,
+    "scenario": "Not Found. The requested resource could not be found but may be available again in the future."
+  },
+  {
+    "offset": "102",
+    "limit": "25",
+    "sort": "desc",
+    "nobelPrizeYear": "2015",
+    "yearTo": "2016",
+    "nobelPrizeCategory": "literature",
+    "format": "json",
+    "csvLang": "false",
+    "statusCode": 422,
+    "scenario": "Unprocessable Entity. The request was well-formed but was unable to be followed due to semantic errors."
+  }
+]
