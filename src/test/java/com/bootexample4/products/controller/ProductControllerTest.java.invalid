@@ -1,0 +1,630 @@
+//This single test file is marked invalid as it contains compilation errors.
+package com.bootexample4.products.controller;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import com.bootexample4.products.model.Product;
+import com.bootexample4.products.repository.ProductRepository;
+import org.junit.jupiter.api.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.mockito.ArgumentCaptor;
+import java.util.Optional;
+import org.springframework.http.HttpStatus;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
+
+@ExtendWith(MockitoExtension.class)
+public class ProductControllerTest {
+
+  // Merged class fields
+  private ProductRepository productRepository;
+  private ProductController productController;
+  private Product product1;
+  private Product product2;
+  private Product product3;
+  List<Product> expectedProducts = Arrays.asList(product1, product2, product3);
+  List<Product> actualProducts = productController.getAllProducts();
+  List<Product> emptyList = Collections.emptyList();
+  Product expectedProduct = new Product();
+  List<Product> singleProductList = Collections.singletonList(product1);
+  RuntimeException expectedException = new RuntimeException("Database connection failed");
+  RuntimeException thrownException = assertThrows(RuntimeException.class, () -> {
+            productController.getAllProducts();
+  private Product validProduct;
+  Product result = productController.createProduct(validProduct);
+  ArgumentCaptor<Product> productCaptor = ArgumentCaptor.forClass(Product.class);
+  Product inputProduct = new Product();
+  Product emptyProduct = new Product();
+  private Product sampleProduct;
+  Long productId = 1L;
+  ResponseEntity<Product> response = productController.getProductById(productId);
+  Long nonExistentId = 999L;
+  Long zeroId = 0L;
+  Long negativeId = -1L;
+  Long maxLongId = Long.MAX_VALUE;
+  private Product existingProduct;
+  private Product newProduct;
+  Product productWithZeroPrice = new Product();
+  private Product testProduct;
+  Long nonExistingId = 999L;
+  Long nullId = null;
+
+  // Merged test methods
+ 
+    void setUp() {
+        product1 = new Product();
+        product1.setName("Product 1");
+        product1.setDescription("Description 1");
+        product1.setPrice(10.99);
+        product2 = new Product();
+        product2.setName("Product 2");
+        product2.setDescription("Description 2");
+        product2.setPrice(20.99);
+        product3 = new Product();
+        product3.setName("Product 3");
+        product3.setDescription("Description 3");
+        product3.setPrice(30.99);
+    }
+
+  
+    void getAllProductsReturnsListWhenProductsExist() {
+        // Arrange
+        List<Product> expectedProducts = Arrays.asList(product1, product2, product3);
+        when(productRepository.findAll()).thenReturn(expectedProducts);
+        // Act
+        List<Product> actualProducts = productController.getAllProducts();
+        // Assert
+        assertNotNull(actualProducts);
+        assertEquals(3, actualProducts.size());
+        assertEquals(expectedProducts, actualProducts);
+    }
+
+  
+    void getAllProductsReturnsEmptyListWhenNoProductsExist() {
+        // Arrange
+        List<Product> emptyList = Collections.emptyList();
+        when(productRepository.findAll()).thenReturn(emptyList);
+        // Act
+        List<Product> actualProducts = productController.getAllProducts();
+        // Assert
+        assertNotNull(actualProducts);
+        assertTrue(actualProducts.isEmpty());
+        assertEquals(0, actualProducts.size());
+    }
+
+  
+    void getAllProductsReturnsCorrectProductData() {
+        // Arrange
+        Product expectedProduct = new Product();
+        expectedProduct.setName("Test Product");
+        expectedProduct.setDescription("Test Description");
+        expectedProduct.setPrice(99.99);
+        
+        List<Product> expectedProducts = Collections.singletonList(expectedProduct);
+        when(productRepository.findAll()).thenReturn(expectedProducts);
+        // Act
+        List<Product> actualProducts = productController.getAllProducts();
+        // Assert
+        assertNotNull(actualProducts);
+        assertEquals(1, actualProducts.size());
+        
+        Product actualProduct = actualProducts.get(0);
+        assertEquals(expectedProduct.getName(), actualProduct.getName());
+        assertEquals(expectedProduct.getDescription(), actualProduct.getDescription());
+        assertEquals(expectedProduct.getPrice(), actualProduct.getPrice());
+    }
+
+  
+    void getAllProductsCallsRepositoryFindAllOnce() {
+        // Arrange
+        when(productRepository.findAll()).thenReturn(new ArrayList<>());
+        // Act
+        productController.getAllProducts();
+        // Assert
+        verify(productRepository, times(1)).findAll();
+    }
+
+  
+    void getAllProductsReturnsSingleProductList() {
+        // Arrange
+        List<Product> singleProductList = Collections.singletonList(product1);
+        when(productRepository.findAll()).thenReturn(singleProductList);
+        // Act
+        List<Product> actualProducts = productController.getAllProducts();
+        // Assert
+        assertNotNull(actualProducts);
+        assertEquals(1, actualProducts.size());
+        assertEquals(product1, actualProducts.get(0));
+    }
+
+  
+    void getAllProductsThrowsExceptionWhenRepositoryFails() {
+        // Arrange
+        RuntimeException expectedException = new RuntimeException("Database connection failed");
+        when(productRepository.findAll()).thenThrow(expectedException);
+        // Act & Assert
+        RuntimeException thrownException = assertThrows(RuntimeException.class, () -> {
+            productController.getAllProducts();
+        });
+        assertEquals("Database connection failed", thrownException.getMessage());
+    }
+
+  
+    void setUp_2() {
+        validProduct = new Product();
+        validProduct.setName("Test Product");
+        validProduct.setDescription("Test Description");
+        validProduct.setPrice(99.99);
+    }
+
+  
+    void createProductWithValidData() {
+        // Arrange
+        when(productRepository.save(any(Product.class))).thenReturn(validProduct);
+        // Act
+        Product result = productController.createProduct(validProduct);
+        // Assert
+        assertNotNull(result);
+        assertEquals(validProduct.getName(), result.getName());
+        assertEquals(validProduct.getDescription(), result.getDescription());
+        assertEquals(validProduct.getPrice(), result.getPrice());
+        verify(productRepository, times(1)).save(validProduct);
+    }
+
+  
+    void createProductWithNullObject() {
+        // Arrange
+        when(productRepository.save(null)).thenReturn(null);
+        // Act
+        Product result = productController.createProduct(null);
+        // Assert
+        assertNull(result);
+        verify(productRepository, times(1)).save(null);
+    }
+
+  
+    void createProductVerifiesRepositorySaveCall() {
+        // Arrange
+        ArgumentCaptor<Product> productCaptor = ArgumentCaptor.forClass(Product.class);
+        when(productRepository.save(any(Product.class))).thenReturn(validProduct);
+        // Act
+        productController.createProduct(validProduct);
+        // Assert
+        verify(productRepository, times(1)).save(productCaptor.capture());
+        Product capturedProduct = productCaptor.getValue();
+        assertEquals(validProduct.getName(), capturedProduct.getName());
+        assertEquals(validProduct.getDescription(), capturedProduct.getDescription());
+        assertEquals(validProduct.getPrice(), capturedProduct.getPrice());
+    }
+
+  
+    void createProductReturnsSavedProductFromRepository() {
+        // Arrange
+        Product inputProduct = new Product();
+        inputProduct.setName("Input Product");
+        inputProduct.setDescription("Input Description");
+        inputProduct.setPrice(50.00);
+        Product savedProduct = new Product();
+        savedProduct.setName("Input Product");
+        savedProduct.setDescription("Input Description");
+        savedProduct.setPrice(50.00);
+        when(productRepository.save(inputProduct)).thenReturn(savedProduct);
+        // Act
+        Product result = productController.createProduct(inputProduct);
+        // Assert
+        assertSame(savedProduct, result);
+    }
+
+  
+    void createProductWhenRepositoryThrowsException() {
+        // Arrange
+        when(productRepository.save(any(Product.class))).thenThrow(new RuntimeException("Database error"));
+        // Act & Assert
+        assertThrows(RuntimeException.class, () -> {
+            productController.createProduct(validProduct);
+        });
+        verify(productRepository, times(1)).save(validProduct);
+    }
+
+  
+    void createProductWithEmptyFields() {
+        // Arrange
+        Product emptyProduct = new Product();
+        emptyProduct.setName("");
+        emptyProduct.setDescription("");
+        emptyProduct.setPrice(0.0);
+        when(productRepository.save(emptyProduct)).thenReturn(emptyProduct);
+        // Act
+        Product result = productController.createProduct(emptyProduct);
+        // Assert
+        assertNotNull(result);
+        assertEquals("", result.getName());
+        assertEquals("", result.getDescription());
+        assertEquals(0.0, result.getPrice());
+        verify(productRepository, times(1)).save(emptyProduct);
+    }
+
+  
+    void setUp_3() {
+        sampleProduct = new Product();
+        sampleProduct.setId(1L);
+        sampleProduct.setName("Test Product");
+        sampleProduct.setDescription("Test Description");
+        sampleProduct.setPrice(99.99);
+    }
+
+  
+    void getProductByIdReturnsProductWhenIdExists() {
+        // Arrange
+        Long productId = 1L;
+        when(productRepository.findById(productId)).thenReturn(Optional.of(sampleProduct));
+        // Act
+        ResponseEntity<Product> response = productController.getProductById(productId);
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals(sampleProduct, response.getBody());
+        assertEquals(sampleProduct.getId(), response.getBody().getId());
+        assertEquals(sampleProduct.getName(), response.getBody().getName());
+        assertEquals(sampleProduct.getDescription(), response.getBody().getDescription());
+        assertEquals(sampleProduct.getPrice(), response.getBody().getPrice());
+        verify(productRepository, times(1)).findById(productId);
+    }
+
+  
+    void getProductByIdReturnsNotFoundWhenIdDoesNotExist() {
+        // Arrange
+        Long nonExistentId = 999L;
+        when(productRepository.findById(nonExistentId)).thenReturn(Optional.empty());
+        // Act
+        ResponseEntity<Product> response = productController.getProductById(nonExistentId);
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertNull(response.getBody());
+        verify(productRepository, times(1)).findById(nonExistentId);
+    }
+
+  
+    void getProductByIdHandlesNullId() {
+        // Arrange
+        when(productRepository.findById(null)).thenReturn(Optional.empty());
+        // Act
+        ResponseEntity<Product> response = productController.getProductById(null);
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertNull(response.getBody());
+        verify(productRepository, times(1)).findById(null);
+    }
+
+  
+    void getProductByIdWithZeroId() {
+        // Arrange
+        Long zeroId = 0L;
+        when(productRepository.findById(zeroId)).thenReturn(Optional.empty());
+        // Act
+        ResponseEntity<Product> response = productController.getProductById(zeroId);
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertNull(response.getBody());
+        verify(productRepository, times(1)).findById(zeroId);
+    }
+
+  
+    void getProductByIdWithNegativeId() {
+        // Arrange
+        Long negativeId = -1L;
+        when(productRepository.findById(negativeId)).thenReturn(Optional.empty());
+        // Act
+        ResponseEntity<Product> response = productController.getProductById(negativeId);
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertNull(response.getBody());
+        verify(productRepository, times(1)).findById(negativeId);
+    }
+
+  
+    void getProductByIdWithMaxLongValue() {
+        // Arrange
+        Long maxLongId = Long.MAX_VALUE;
+        when(productRepository.findById(maxLongId)).thenReturn(Optional.empty());
+        // Act
+        ResponseEntity<Product> response = productController.getProductById(maxLongId);
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertNull(response.getBody());
+        verify(productRepository, times(1)).findById(maxLongId);
+    }
+
+  
+    void getProductByIdReturnsCorrectProductData() {
+        // Arrange
+        Long productId = 5L;
+        Product specificProduct = new Product();
+        specificProduct.setId(productId);
+        specificProduct.setName("Specific Product");
+        specificProduct.setDescription("Specific Description");
+        specificProduct.setPrice(149.99);
+        when(productRepository.findById(productId)).thenReturn(Optional.of(specificProduct));
+        // Act
+        ResponseEntity<Product> response = productController.getProductById(productId);
+        // Assert
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        
+        Product returnedProduct = response.getBody();
+        assertEquals(specificProduct.getId(), returnedProduct.getId());
+        assertEquals(specificProduct.getName(), returnedProduct.getName());
+        assertEquals(specificProduct.getDescription(), returnedProduct.getDescription());
+        assertEquals(specificProduct.getPrice(), returnedProduct.getPrice());
+        assertSame(specificProduct, returnedProduct);
+        verify(productRepository, times(1)).findById(productId);
+    }
+
+  
+    void setUp_4() {
+        existingProduct = new Product();
+        existingProduct.setName("Old Name");
+        existingProduct.setDescription("Old Description");
+        existingProduct.setPrice(10.0);
+        newProduct = new Product();
+        newProduct.setName("New Name");
+        newProduct.setDescription("New Description");
+        newProduct.setPrice(20.0);
+    }
+
+  
+    void updateExistingProductSuccessfully() {
+        when(productRepository.findById(1L)).thenReturn(Optional.of(existingProduct));
+        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        ResponseEntity<Product> response = productController.updateProduct(1L, newProduct);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals("New Name", response.getBody().getName());
+        assertEquals("New Description", response.getBody().getDescription());
+        assertEquals(20.0, response.getBody().getPrice());
+    }
+
+  
+    void updateProductWithNonExistentIdReturnsNotFound() {
+        when(productRepository.findById(999L)).thenReturn(Optional.empty());
+        ResponseEntity<Product> response = productController.updateProduct(999L, newProduct);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertNull(response.getBody());
+        verify(productRepository, never()).save(any(Product.class));
+    }
+
+  
+    void updateProductWithNullName() {
+        Product productWithNullName = new Product();
+        productWithNullName.setName(null);
+        productWithNullName.setDescription("Valid Description");
+        productWithNullName.setPrice(15.0);
+        when(productRepository.findById(1L)).thenReturn(Optional.of(existingProduct));
+        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        ResponseEntity<Product> response = productController.updateProduct(1L, productWithNullName);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertNull(response.getBody().getName());
+    }
+
+  
+    void updateProductWithNullDescription() {
+        Product productWithNullDescription = new Product();
+        productWithNullDescription.setName("Valid Name");
+        productWithNullDescription.setDescription(null);
+        productWithNullDescription.setPrice(15.0);
+        when(productRepository.findById(1L)).thenReturn(Optional.of(existingProduct));
+        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        ResponseEntity<Product> response = productController.updateProduct(1L, productWithNullDescription);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertNull(response.getBody().getDescription());
+    }
+
+  
+    void updateProductWithZeroPrice() {
+        // Changed from null to 0.0 since price is a primitive double type
+        Product productWithZeroPrice = new Product();
+        productWithZeroPrice.setName("Valid Name");
+        productWithZeroPrice.setDescription("Valid Description");
+        productWithZeroPrice.setPrice(0.0);
+        when(productRepository.findById(1L)).thenReturn(Optional.of(existingProduct));
+        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        ResponseEntity<Product> response = productController.updateProduct(1L, productWithZeroPrice);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals(0.0, response.getBody().getPrice());
+    }
+
+  
+    void updateProductWithZeroId() {
+        when(productRepository.findById(0L)).thenReturn(Optional.empty());
+        ResponseEntity<Product> response = productController.updateProduct(0L, newProduct);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(productRepository, never()).save(any(Product.class));
+    }
+
+  
+    void updateProductWithNegativeId() {
+        when(productRepository.findById(-1L)).thenReturn(Optional.empty());
+        ResponseEntity<Product> response = productController.updateProduct(-1L, newProduct);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(productRepository, never()).save(any(Product.class));
+    }
+
+  
+    void updateProductVerifiesRepositorySaveIsCalled() {
+        when(productRepository.findById(1L)).thenReturn(Optional.of(existingProduct));
+        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        productController.updateProduct(1L, newProduct);
+        verify(productRepository, times(1)).save(any(Product.class));
+        verify(productRepository, times(1)).findById(1L);
+    }
+
+  
+    void updateProductWithEmptyStringValues() {
+        Product productWithEmptyStrings = new Product();
+        productWithEmptyStrings.setName("");
+        productWithEmptyStrings.setDescription("");
+        productWithEmptyStrings.setPrice(15.0);
+        when(productRepository.findById(1L)).thenReturn(Optional.of(existingProduct));
+        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        ResponseEntity<Product> response = productController.updateProduct(1L, productWithEmptyStrings);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals("", response.getBody().getName());
+        assertEquals("", response.getBody().getDescription());
+    }
+
+  
+    void updateProductWithMaxLongIdValue() {
+        when(productRepository.findById(Long.MAX_VALUE)).thenReturn(Optional.empty());
+        ResponseEntity<Product> response = productController.updateProduct(Long.MAX_VALUE, newProduct);
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(productRepository, never()).save(any(Product.class));
+    }
+
+  
+    void updateProductWithNegativePrice() {
+        Product productWithNegativePrice = new Product();
+        productWithNegativePrice.setName("Valid Name");
+        productWithNegativePrice.setDescription("Valid Description");
+        productWithNegativePrice.setPrice(-10.0);
+        when(productRepository.findById(1L)).thenReturn(Optional.of(existingProduct));
+        when(productRepository.save(any(Product.class))).thenAnswer(invocation -> invocation.getArgument(0));
+        ResponseEntity<Product> response = productController.updateProduct(1L, productWithNegativePrice);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertNotNull(response.getBody());
+        assertEquals(-10.0, response.getBody().getPrice());
+        // Business logic suggestion: Consider adding validation to reject negative prices
+    }
+
+  
+    void setUp_5() {
+        testProduct = new Product();
+        testProduct.setName("Test Product");
+        testProduct.setDescription("Test Description");
+        testProduct.setPrice(99.99);
+    }
+
+  
+    void deleteExistingProductReturnsOkResponse() {
+        // Arrange
+        Long productId = 1L;
+        when(productRepository.findById(productId)).thenReturn(Optional.of(testProduct));
+        doNothing().when(productRepository).delete(testProduct);
+        // Act
+        ResponseEntity<Object> response = productController.deleteProduct(productId);
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        verify(productRepository, times(1)).findById(productId);
+        verify(productRepository, times(1)).delete(testProduct);
+    }
+
+  
+    void deleteNonExistingProductReturnsNotFound() {
+        // Arrange
+        Long nonExistingId = 999L;
+        when(productRepository.findById(nonExistingId)).thenReturn(Optional.empty());
+        // Act
+        ResponseEntity<Object> response = productController.deleteProduct(nonExistingId);
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(productRepository, times(1)).findById(nonExistingId);
+        verify(productRepository, never()).delete(any(Product.class));
+    }
+
+  
+    void deleteProductWithNullIdHandledGracefully() {
+        // Arrange
+        Long nullId = null;
+        when(productRepository.findById(nullId)).thenReturn(Optional.empty());
+        // Act
+        ResponseEntity<Object> response = productController.deleteProduct(nullId);
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(productRepository, never()).delete(any(Product.class));
+    }
+
+  
+    void deleteProductWithZeroIdReturnsNotFound() {
+        // Arrange
+        Long zeroId = 0L;
+        when(productRepository.findById(zeroId)).thenReturn(Optional.empty());
+        // Act
+        ResponseEntity<Object> response = productController.deleteProduct(zeroId);
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(productRepository, times(1)).findById(zeroId);
+        verify(productRepository, never()).delete(any(Product.class));
+    }
+
+  
+    void deleteProductWithNegativeIdReturnsNotFound() {
+        // Arrange
+        Long negativeId = -1L;
+        when(productRepository.findById(negativeId)).thenReturn(Optional.empty());
+        // Act
+        ResponseEntity<Object> response = productController.deleteProduct(negativeId);
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(productRepository, times(1)).findById(negativeId);
+        verify(productRepository, never()).delete(any(Product.class));
+    }
+
+  
+    void deleteProductWithMaxLongIdReturnsNotFound() {
+        // Arrange
+        Long maxLongId = Long.MAX_VALUE;
+        when(productRepository.findById(maxLongId)).thenReturn(Optional.empty());
+        // Act
+        ResponseEntity<Object> response = productController.deleteProduct(maxLongId);
+        // Assert
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        verify(productRepository, times(1)).findById(maxLongId);
+        verify(productRepository, never()).delete(any(Product.class));
+    }
+
+  
+    void deleteProductCallsRepositoryDeleteWithCorrectProduct() {
+        // Arrange
+        Long productId = 1L;
+        Product specificProduct = new Product();
+        specificProduct.setName("Specific Product");
+        specificProduct.setDescription("Specific Description");
+        specificProduct.setPrice(150.00);
+        when(productRepository.findById(productId)).thenReturn(Optional.of(specificProduct));
+        doNothing().when(productRepository).delete(any(Product.class));
+        // Act
+        ResponseEntity<Object> response = productController.deleteProduct(productId);
+        // Assert
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        
+        ArgumentCaptor<Product> productCaptor = ArgumentCaptor.forClass(Product.class);
+        verify(productRepository, times(1)).delete(productCaptor.capture());
+        
+        Product capturedProduct = productCaptor.getValue();
+        assertSame(specificProduct, capturedProduct);
+        assertEquals("Specific Product", capturedProduct.getName());
+        assertEquals("Specific Description", capturedProduct.getDescription());
+        assertEquals(150.00, capturedProduct.getPrice());
+    }
+}
