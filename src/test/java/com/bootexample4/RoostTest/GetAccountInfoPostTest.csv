@@ -1,0 +1,11 @@
+koreUserId^|^botId^|^accountId^|^Authorization^|^X-Auth-token^|^X-CORRELATION-ID^|^RequestBody^|^statusCode^|^bearer
+user123^|^bot456^|^acc789^|^Bearer abcdef123456^|^token987^|^123456789^|^{"customerId":101}^|^200^|^
+user124^|^bot457^|^acc790^|^Bearer zxcv987654^|^token654^|^987654321^|^{"customerId":102}^|^401^|^
+user125^|^bot458^|^acc791^|^Bearer qwert654321^|^token321^|^456789123^|^{"customerId":103}^|^404^|^
+user126^|^bot459^|^acc792^|^Bearer poiuy123456^|^token123^|^789123456^|^{"customerId":104}^|^200^|^
+user127^|^bot460^|^acc793^|^Bearer lkjhg987654^|^token789^|^321654987^|^{"customerId":105}^|^401^|^
+user128^|^bot461^|^acc794^|^Bearer mnbvc654321^|^token456^|^654321987^|^{"customerId":106}^|^404^|^
+user129^|^bot462^|^acc795^|^Bearer asdf123456^|^token852^|^147852369^|^{"customerId":107}^|^200^|^
+user130^|^bot463^|^acc796^|^Bearer werty987654^|^token963^|^258963147^|^{"customerId":108}^|^401^|^
+user131^|^bot464^|^acc797^|^Bearer yuiop654321^|^token741^|^369258147^|^{"customerId":109}^|^404^|^
+user132^|^bot465^|^acc798^|^Bearer hjkl123456^|^token159^|^951753852^|^{"customerId":110}^|^200^|^

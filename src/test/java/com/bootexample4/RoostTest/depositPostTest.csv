@@ -1,0 +1,11 @@
+koreUserId^|^botId^|^accountId^|^Authorization^|^RequestBody^|^statusCode^|^bearer
+user1234^|^bot5678^|^acc9999^|^auth-token-1234^|^{"customerId":101,"sourceAccountId":"src5678","amount":"100.00","currency":"USD","image":{"frontImage":"image_front_123.jpg","backImage":"image_back_123.jpg"}}^|^200^|^
+user2345^|^bot6789^|^acc8888^|^auth-token-2345^|^{"customerId":102,"sourceAccountId":"src6789","amount":"250.50","currency":"EUR","image":{"frontImage":"image_front_234.jpg","backImage":"image_back_234.jpg"}}^|^401^|^
+user3456^|^bot7890^|^acc7777^|^auth-token-3456^|^{"customerId":103,"sourceAccountId":"src7890","amount":"75.25","currency":"INR","image":{"frontImage":"image_front_345.jpg","backImage":"image_back_345.jpg"}}^|^404^|^
+user4567^|^bot8901^|^acc6666^|^auth-token-4567^|^{"customerId":104,"sourceAccountId":"src8901","amount":"500.00","currency":"GBP","image":{"frontImage":"image_front_456.jpg","backImage":"image_back_456.jpg"}}^|^200^|^
+user5678^|^bot9012^|^acc5555^|^auth-token-5678^|^{"customerId":105,"sourceAccountId":"src9012","amount":"999.99","currency":"JPY","image":{"frontImage":"image_front_567.jpg","backImage":"image_back_567.jpg"}}^|^401^|^
+user6789^|^bot0123^|^acc4444^|^auth-token-6789^|^{"customerId":106,"sourceAccountId":"src0123","amount":"350.75","currency":"AUD","image":{"frontImage":"image_front_678.jpg","backImage":"image_back_678.jpg"}}^|^404^|^
+user7890^|^bot1234^|^acc3333^|^auth-token-7890^|^{"customerId":107,"sourceAccountId":"src1234","amount":"450.00","currency":"CAD","image":{"frontImage":"image_front_789.jpg","backImage":"image_back_789.jpg"}}^|^200^|^
+user8901^|^bot2345^|^acc2222^|^auth-token-8901^|^{"customerId":108,"sourceAccountId":"src2345","amount":"230.45","currency":"ZAR","image":{"frontImage":"image_front_890.jpg","backImage":"image_back_890.jpg"}}^|^401^|^
+user9012^|^bot3456^|^acc1111^|^auth-token-9012^|^{"customerId":109,"sourceAccountId":"src3456","amount":"1200.00","currency":"CHF","image":{"frontImage":"image_front_901.jpg","backImage":"image_back_901.jpg"}}^|^404^|^
+user0123^|^bot4567^|^acc0000^|^auth-token-0123^|^{"customerId":110,"sourceAccountId":"src4567","amount":"999.50","currency":"NZD","image":{"frontImage":"image_front_012.jpg","backImage":"image_back_012.jpg"}}^|^200^|^

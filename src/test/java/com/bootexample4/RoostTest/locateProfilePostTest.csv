@@ -1,0 +1,11 @@
+RequestBody^|^statusCode^|^bearer
+{"customerId":"CUST12345","ssNumber":"SSN987654321","ssnShort":"9876","accountNumber":"ACCT001"}^|^200^|^
+{"customerId":"CUST54321","ssNumber":"SSN123456789","ssnShort":"1234","accountNumber":"ACCT002"}^|^401^|^
+{"customerId":"CUST98765","ssNumber":"SSN567890123","ssnShort":"5678","accountNumber":"ACCT003"}^|^404^|^
+{"customerId":"CUST11223","ssNumber":"SSN234567890","ssnShort":"2345","accountNumber":"ACCT004"}^|^200^|^
+{"customerId":"CUST44556","ssNumber":"SSN890123456","ssnShort":"8901","accountNumber":"ACCT005"}^|^401^|^
+{"customerId":"CUST77889","ssNumber":"SSN345678901","ssnShort":"3456","accountNumber":"ACCT006"}^|^404^|^
+{"customerId":"CUST99112","ssNumber":"SSN678901234","ssnShort":"6789","accountNumber":"ACCT007"}^|^200^|^
+{"customerId":"CUST22334","ssNumber":"SSN456789012","ssnShort":"4567","accountNumber":"ACCT008"}^|^401^|^
+{"customerId":"CUST55667","ssNumber":"SSN901234567","ssnShort":"9012","accountNumber":"ACCT009"}^|^404^|^
+{"customerId":"CUST88990","ssNumber":"SSN123450987","ssnShort":"1234","accountNumber":"ACCT010"}^|^200^|^

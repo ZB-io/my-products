@@ -1,0 +1,11 @@
+koreUserId^|^botId^|^accountId^|^tenantId^|^Authorization^|^environment^|^channel^|^RequestBody^|^statusCode^|^bearer
+user12345^|^bot001^|^acc123^|^tenant001^|^Bearer abcdef123456^|^production^|^web^|^{"usecase":["fetchData","updateRecord"]}^|^200^|^
+user56789^|^bot002^|^acc456^|^tenant002^|^Bearer ghijkl789012^|^staging^|^mobile^|^{"usecase":["getDetails","calculateStats"]}^|^401^|^
+user98765^|^bot003^|^acc789^|^tenant003^|^Bearer mnopqr345678^|^production^|^desktop^|^{"usecase":["authenticate","queryData"]}^|^404^|^
+user54321^|^bot004^|^acc321^|^tenant004^|^Bearer stuvwx901234^|^testing^|^web^|^{"usecase":["deleteRecord","fetchLogs"]}^|^200^|^
+user11111^|^bot005^|^acc111^|^tenant005^|^Bearer yzabcd567890^|^production^|^mobile^|^{"usecase":["processPayment","getSummary"]}^|^401^|^
+user22222^|^bot006^|^acc222^|^tenant006^|^Bearer efghij123098^|^staging^|^desktop^|^{"usecase":["validateUser","fetchMetrics"]}^|^404^|^
+user33333^|^bot007^|^acc333^|^tenant007^|^Bearer klmnop456789^|^testing^|^web^|^{"usecase":["scheduleJob","getUpdates"]}^|^200^|^
+user44444^|^bot008^|^acc444^|^tenant008^|^Bearer qrstu890123^|^production^|^mobile^|^{"usecase":["checkStatus","pullReports"]}^|^200^|^
+user55555^|^bot009^|^acc555^|^tenant009^|^Bearer vwxyz123456^|^staging^|^desktop^|^{"usecase":["syncData","logErrors"]}^|^401^|^
+user66666^|^bot010^|^acc666^|^tenant010^|^Bearer abcdef789012^|^testing^|^web^|^{"usecase":["resetPassword","updateProfile"]}^|^404^|^
