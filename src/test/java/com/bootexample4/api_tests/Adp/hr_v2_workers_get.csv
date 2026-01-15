@@ -1,0 +1,4 @@
+filter,count,top,skip
+"""/workers/workerID/idValue eq '0099'""","true","10","20"
+"null","false","5","0"
+"null","true","null","null"
