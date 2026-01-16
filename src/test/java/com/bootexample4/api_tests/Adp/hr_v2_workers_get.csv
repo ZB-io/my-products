@@ -1,0 +1,6 @@
+filterValue,top,skip
+"/workers/workerID/idValue eq '0099'","10","0"
+"/workers/workerStatus/statusCode/codeValue eq 'Active'","5","10"
+"/workers/workerID/idValue eq '0099'","20","20"
+"/workers/workerStatus/statusCode/codeValue eq 'Active'","5","10"
+"/workers/workerID/idValue eq '0099'","20","20"
