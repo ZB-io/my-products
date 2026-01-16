@@ -1,0 +1,74 @@
+[
+  {
+    "offset": "10",
+    "limit": "50",
+    "sort": "asc",
+    "nobelPrizeYear": "2000",
+    "yearTo": "2020",
+    "nobelPrizeCategory": "physics",
+    "format": "json",
+    "csvLang": "en",
+    "statusCode": 200,
+    "scenario": "Successful call of Nobel Prize(s) according to the filled fields"
+  },
+  {
+    "offset": "invalid_offset",
+    "limit": "-1",
+    "sort": "unknown",
+    "nobelPrizeYear": "invalid_year",
+    "yearTo": "invalid_year_to",
+    "nobelPrizeCategory": "",
+    "format": "xml",
+    "csvLang": "xyz",
+    "statusCode": 400,
+    "scenario": "Bad request.The request could not be understood by the server due to malformed syntax, modifications needed."
+  },
+  {
+    "offset": "50",
+    "limit": "100",
+    "sort": "desc",
+    "nobelPrizeYear": "1990",
+    "yearTo": "2000",
+    "nobelPrizeCategory": "chemistry",
+    "format": "csv",
+    "csvLang": "se",
+    "statusCode": 200,
+    "scenario": "Successful call of Nobel Prize(s) according to the filled fields"
+  },
+  {
+    "offset": "999999",
+    "limit": "999999",
+    "sort": "zzz",
+    "nobelPrizeYear": "abcd",
+    "yearTo": "zzz",
+    "nobelPrizeCategory": "invalid_category",
+    "format": "unknown",
+    "csvLang": "unknown",
+    "statusCode": 404,
+    "scenario": "Not Found. The requested resource could not be found but may be available again in the future."
+  },
+  {
+    "offset": "20",
+    "limit": "25",
+    "sort": "asc",
+    "nobelPrizeYear": "2021",
+    "yearTo": "2022",
+    "nobelPrizeCategory": "medicine",
+    "format": "json",
+    "csvLang": "false",
+    "statusCode": 200,
+    "scenario": "Successful call of Nobel Prize(s) according to the filled fields"
+  },
+  {
+    "offset": "null",
+    "limit": "error",
+    "sort": "random",
+    "nobelPrizeYear": "abc",
+    "yearTo": "20000",
+    "nobelPrizeCategory": "test_category",
+    "format": "",
+    "csvLang": "error_lang",
+    "statusCode": 422,
+    "scenario": "Unprocessable Entity. The request was well-formed but was unable to be followed due to semantic errors."
+  }
+]
