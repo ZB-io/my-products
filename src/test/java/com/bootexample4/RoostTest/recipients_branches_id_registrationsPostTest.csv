@@ -1,0 +1,11 @@
+id^|^RequestBody^|^statusCode^|^Token
+c0f3e068-8c5e-4c48-b210-aa5e88f7b123^|^{"reference":"abc_reference_01","startDate":"2023-01-01","endDate":"2023-12-31","credentialUrl":"http://example.com/credentials/abc01"}^|^201^|^  
+22eb978f-1f2e-4e71-a05d-ee97d64d7e21^|^{"reference":"xyz_reference_02","startDate":"2023-03-01","endDate":"2023-09-30","credentialUrl":"http://example.com/credentials/xyz02"}^|^401^|^  
+be3a2f57-299c-4db1-8a36-26d359488efc^|^{"reference":"lmn_reference_03","startDate":"2023-02-15","endDate":"2023-11-15","credentialUrl":"http://example.com/credentials/lmn03"}^|^400^|^  
+9b7c5e6d-0167-48cd-bf79-d4a8e9b7eec6^|^{"reference":"qrs_reference_04","startDate":"2023-04-01","endDate":null,"credentialUrl":"http://example.com/credentials/qrs04"}^|^201^|^  
+fc06bc8a-75f6-43e2-b2a5-4fb405d2b26a^|^{"reference":"uvw_reference_05","startDate":"2023-05-01","endDate":"2023-10-01","credentialUrl":"http://example.com/credentials/uvw05"}^|^401^|^  
+4176a5cc-6aaa-4eb3-bd1c-5daa7fe6b12f^|^{"reference":"def_reference_06","startDate":"2023-06-01","endDate":"2023-12-01","credentialUrl":"http://example.com/credentials/def06"}^|^400^|^  
+874da7e9-d633-442e-9872-af4ea43dbc14^|^{"reference":"ghi_reference_07","startDate":"2023-07-15","endDate":null,"credentialUrl":"http://example.com/credentials/ghi07"}^|^201^|^  
+563acbaa-952f-4fd2-8892-ecb20f4f5d86^|^{"reference":"mno_reference_08","startDate":"2023-08-01","endDate":"2024-01-31","credentialUrl":"http://example.com/credentials/mno08"}^|^401^|^  
+f194b931-c152-4b92-88eb-af287b8072c2^|^{"reference":"rst_reference_09","startDate":"2023-09-01","endDate":"2023-12-30","credentialUrl":"http://example.com/credentials/rst09"}^|^201^|^  
+30c7e400-f500-4080-bf22-2edc5e81cd71^|^{"reference":"tuv_reference_10","startDate":"2023-10-01","endDate":null,"credentialUrl":"http://example.com/credentials/tuv10"}^|^400^|^  
