@@ -1,0 +1,8 @@
+filter,count,top,skip
+"/workers/workerID/idValue eq '0099'","true","10","0"
+"/workers/person/birthDate eq '1990-01-01'","false","5","10"
+"/workers/workerID/idValue eq '0099'","true","20","20"
+"/workers/person/birthDate eq '1990-01-01'","false","5","10"
+"/workers/workerID/idValue eq '0099'","true","20","20"
+"/workers/person/birthDate eq '1990-01-01'","false","5","10"
+"/workers/workerID/idValue eq '0099'","true","20","20"
