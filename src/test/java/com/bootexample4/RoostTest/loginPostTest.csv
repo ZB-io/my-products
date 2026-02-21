@@ -1,0 +1,11 @@
+RequestBody^|^statusCode
+{"email":"john.doe@example.com","otp":"783521","client":"mobile"}^|^201
+{"email":"jane.smith@example.org","otp":"516283","client":"web"}^|^400
+{"email":"alice.jones@example.net","otp":"193846","client":"desktop"}^|^201
+{"email":"michael.brown@example.com","otp":"827364","client":"api"}^|^400
+{"email":"emma.white@example.org","otp":"031698","client":"mobile"}^|^201
+{"email":"david.green@example.net","otp":"709182","client":"web"}^|^400
+{"email":"sophia.black@example.com","otp":"485672","client":"desktop"}^|^201
+{"email":"liam.tailor@example.org","otp":"627948","client":"api"}^|^400
+{"email":"olivia.kim@example.net","otp":"943852","client":"mobile"}^|^201
+{"email":"noah.lane@example.com","otp":"320174","client":"web"}^|^400
