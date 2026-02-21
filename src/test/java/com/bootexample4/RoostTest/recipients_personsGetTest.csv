@@ -1,0 +1,11 @@
+size^|^offset^|^name^|^birth-date^|^RequestBody^|^statusCode^|^Token
+25^|^5^|^JohnDoe^|^1990-05-15^|^{"action":"create","resource":"profile","details":{"age":33,"preference":"sports"}}^|^200^|^abc123token
+30^|^10^|^JaneSmith^|^1985-09-20^|^{"action":"update","resource":"settings","details":{"notifications":true,"theme":"dark"}}^|^200^|^def456token
+20^|^0^|^AliceJohnson^|^2000-02-14^|^{"action":"delete","resource":"account","details":{"accountId":7824}}^|^401^|^ghi789token
+10^|^3^|^BobWilliams^|^1995-11-03^|^{"action":"create","resource":"order","details":{"orderId":5432,"priority":"high"}}^|^400^|^xyz987token
+15^|^7^|^EmmaBrown^|^1992-07-25^|^{"action":"update","resource":"preferences","details":{"language":"en","timezone":"EST"}}^|^200^|^lmn654token
+40^|^25^|^LiamDavis^|^1988-03-11^|^{"action":"query","resource":"history","details":{"pageSize":100,"offset":0}}^|^200^|^opq321token
+18^|^8^|^OliviaGarcia^|^2002-08-19^|^{"action":"create","resource":"subscription","details":{"subscriptionType":"premium","duration":"1 year"}}^|^401^|^rst222token
+12^|^6^|^EthanMartinez^|^1997-12-27^|^{"action":"update","resource":"security","details":{"passwordChanged":true}}^|^400^|^uvw333token
+45^|^30^|^IsabellaLopez^|^1991-04-09^|^{"action":"delete","resource":"message","details":{"messageId":12345}}^|^200^|^xyz444token
+50^|^15^|^SophiaWilson^|^1983-06-18^|^{"action":"query","resource":"inventory","details":{"category":"electronics","stockAbove":20}}^|^200^|^abc555token

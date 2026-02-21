@@ -1,0 +1,11 @@
+RequestBody^|^statusCode^|^Token
+{"action":"login","user":"Alice","details":{"timestamp":"2023-10-01T10:15:30"}}^|^200^|^abc123xyz
+{"action":"fetchData","user":"Bob","details":{"timestamp":"2023-10-02T12:45:00"}}^|^400^|^qwe456rty
+{"action":"logout","user":"Charlie","details":{"timestamp":"2023-10-03T14:22:10"}}^|^200^|^zxc789vbn
+{"action":"login","user":"Diana","details":{"timestamp":"2023-10-04T16:59:45"}}^|^200^|^poi213asd
+{"action":"updateProfile","user":"Eve","details":{"timestamp":"2023-10-05T09:33:25"}}^|^400^|^mnb765ghj
+{"action":"deleteAccount","user":"Frank","details":{"timestamp":"2023-10-06T15:00:00"}}^|^200^|^lkj098uio
+{"action":"register","user":"Grace","details":{"timestamp":"2023-10-07T18:15:17"}}^|^400^|^bvc432rfv
+{"action":"resetPassword","user":"Hank","details":{"timestamp":"2023-10-08T20:56:45"}}^|^200^|^hyt320wer
+{"action":"login","user":"Ivy","details":{"timestamp":"2023-10-09T08:30:50"}}^|^200^|^plk561mno
+{"action":"fetchData","user":"Jack","details":{"timestamp":"2023-10-10T22:10:30"}}^|^400^|^kjh784ewq

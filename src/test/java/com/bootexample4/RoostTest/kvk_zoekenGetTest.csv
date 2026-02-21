@@ -1,0 +1,11 @@
+kvkNummer^|^vestigingsnummer^|^handelsnaam^|^RequestBody^|^statusCode^|^Token
+12345678^|^87654321^|^Tech Innovations Ltd.^|^{"requestType":"GET","endPoint":"/api/v1/resource","body":{"id":1,"filter":true}}^|^200^|^abcdef12345
+23456789^|^98765432^|^Green Solutions^|^{"requestType":"POST","endPoint":"/api/v2/update","body":{"itemId":42,"status":"active"}}^|^201^|^bcdefa23456
+34567890^|^10987654^|^Blue Skies Enterprises^|^{"requestType":"PUT","endPoint":"/api/v3/edit","body":{"userId":789,"role":"admin"}}^|^204^|^cdefab34567
+45678901^|^21098765^|^Urban Planners Corp.^|^{"requestType":"DELETE","endPoint":"/api/v1/remove","body":{"resourceId":55}}^|^202^|^defabc45678
+56789012^|^32109876^|^NextGen Tech^|^{"requestType":"GET","endPoint":"/api/v1/details","body":{"category":"devices","region":"EU"}}^|^200^|^efabcd56789
+67890123^|^43210987^|^EcoWorld Innovations^|^{"requestType":"POST","endPoint":"/api/v1/create","body":{"name":"SmartHub","features":["wifi","ble"]}}^|^201^|^fab12345678
+78901234^|^54321098^|^Alpha Builders Inc.^|^{"requestType":"PATCH","endPoint":"/api/v2/modify","body":{"propertyId":101010,"status":"approved"}}^|^200^|^3456789fab12
+89012345^|^65432109^|^Orbit Consulting^|^{"requestType":"GET","endPoint":"/api/v4/lookup","body":{"query":"digital transformation"}}^|^200^|^456789fab231
+90123456^|^76543210^|^Prismatic AI^|^{"requestType":"DELETE","endPoint":"/api/v2/delete","body":{"keys":["key1","key2","key3"]}}^|^204^|^567890fabcd2
+01234567^|^87654320^|^Future Horizons^|^{"requestType":"PUT","endPoint":"/api/v3/updateStatus","body":{"orderId":"ZXCV123","state":"processed"}}^|^200^|^678901abcd23

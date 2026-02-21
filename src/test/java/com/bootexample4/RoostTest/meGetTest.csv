@@ -1,0 +1,11 @@
+RequestBody^|^statusCode^|^Token
+{"userId":1,"action":"login","timestamp":"2023-10-01T08:45:00Z"}^|^200^|^abc123token
+{"userId":2,"action":"logout","timestamp":"2023-10-01T09:15:00Z"}^|^200^|^xyz987token
+{"userId":3,"action":"updateProfile","timestamp":"2023-10-02T10:25:00Z"}^|^400^|^qwe456token
+{"userId":4,"action":"deleteAccount","timestamp":"2023-10-02T12:45:00Z"}^|^401^|^rty741token
+{"userId":5,"action":"resetPassword","timestamp":"2023-10-03T14:00:00Z"}^|^200^|^uio852token
+{"userId":6,"action":"register","timestamp":"2023-10-03T15:30:00Z"}^|^200^|^plm963token
+{"userId":7,"action":"login","timestamp":"2023-10-04T07:55:00Z"}^|^401^|^bnv741token
+{"userId":8,"action":"logout","timestamp":"2023-10-04T08:20:00Z"}^|^200^|^zas159token
+{"userId":9,"action":"changeEmail","timestamp":"2023-10-05T11:10:00Z"}^|^400^|^xmd753token
+{"userId":10,"action":"verifyAccount","timestamp":"2023-10-05T16:45:00Z"}^|^200^|^kop951token
