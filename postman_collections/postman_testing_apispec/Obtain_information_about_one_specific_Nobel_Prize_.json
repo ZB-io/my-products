@@ -1,0 +1,32 @@
+[
+  {
+    "category": "lit",
+    "year": "1989",
+    "statusCode": 200,
+    "scenario": "Successful call of the Nobel Prize giving the category and year"
+  },
+  {
+    "category": "xyz123",
+    "year": "abcd",
+    "statusCode": 400,
+    "scenario": "Bad request.The request could not be understood by the server due to malformed syntax, modifications needed."
+  },
+  {
+    "category": "med",
+    "year": "2015",
+    "statusCode": 404,
+    "scenario": "Not Found. The requested resource could not be found but may be available again in the future."
+  },
+  {
+    "category": "eco123",
+    "year": "20xx",
+    "statusCode": 422,
+    "scenario": "Unprocessable Entity. The request was well-formed but was unable to be followed due to semantic errors."
+  },
+  {
+    "category": "phy",
+    "year": "2001",
+    "statusCode": 200,
+    "scenario": "Successful call of the Nobel Prize giving the category and year"
+  }
+]
